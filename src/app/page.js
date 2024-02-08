@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchallproducts() {
-      let req = await axios.get('https://optimum-nutrition-ecommerce.vercel.app/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) });
+      let req = await axios.get('https://optimum-nutrition-a331ffg8n-mohits-projects-68c1e442.vercel.app/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) });
     };
     fetchallproducts();
     setisLoading(false);
