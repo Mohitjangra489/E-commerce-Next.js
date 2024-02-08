@@ -26,7 +26,7 @@ function Login() {
           'Content-Type': 'application/json',
         },
       }
-      const res = await axios.post("http://localhost:8000/logincheck",userDetails,config).catch((err) => {
+      const res = await axios.post("https://optimum-nutrition.vercel.app/logincheck",userDetails,config).catch((err) => {
         toast.error( err?.response?.data?.message);
         });
 
