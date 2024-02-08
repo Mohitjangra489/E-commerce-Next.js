@@ -32,7 +32,7 @@ const SECRET_KEY = "jsonwebtokensecretkey";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-    origin:"https://optimum-nutrition.vercel.app"
+    origin:"*"
 }));
 
 app.use((req, res, next) => {
