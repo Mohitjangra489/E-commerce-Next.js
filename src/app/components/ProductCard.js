@@ -4,8 +4,6 @@ import '../styles/productcard.css';
 import StarRatings from "react-star-ratings";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import SpinnerLoader from './spinnerLoader';
-import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
