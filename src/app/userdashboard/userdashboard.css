@@ -1,0 +1,127 @@
+.userdashboard_container{
+    height: 100%;
+    width: 100%;
+}
+
+.user_title{
+    height: 10em;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+ 
+}
+.user_title >span{
+    font-size: 5em;
+    font-weight: 600;
+}
+.user_main_body{
+    display: flex;
+}
+.user_left{
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid grey; */
+    /* padding: 10px; */
+    box-sizing: border-box;
+    margin: 63px 0px 0px 8px;
+}
+.user_right{
+    width: 80%;
+    height: 100%;
+    /* border: 1px solid grey; */
+    padding: 10px;
+    display: flex;
+    padding-right: 10em;
+
+
+}
+.admin_span{
+    color: red;
+    font-weight: 700;
+}
+.user_left >ul>li   {   
+    list-style-type:none;
+    line-height: 1.8;
+}
+.user_left>ul>a{
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+    line-height: 1.8;
+
+}
+
+.user_image{
+    height: 15rem;
+    width: 15rem;
+    margin-right: 20px;
+border-radius: 50%;
+
+}
+.all_icons{
+    height: 30px;
+    width: 30px;
+}
+.profile_container{
+width: 100%;
+height: 100%;
+}
+.edit_profile_btn{
+    border: none;
+    margin: 4px;
+   background-color:  #e2e2e2;
+}
+
+.edit_profile_btn:hover{
+    box-shadow: 0px 0px 5px 0px grey;
+
+}
+.profile_details{
+width: 100%;
+height: 100%;
+background: #f4f4f4;
+display: flex;
+align-items: normal;
+justify-content: space-between;
+gap: 65px;
+margin-top: 37px;
+}
+
+.profile_lower_div_divs{
+    height: 12rem;
+    border: 1px solid #d8d3d3;
+    display: flex;
+    flex-direction: column;
+    width: 32rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.profile_lower_div_divs:hover{
+    background-color: #f4f4f4;
+    border: none;
+    box-shadow: 0px 0px 5px 0px grey;
+    transition: 0.3s ease-in-out;
+}
+.profile_lower_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 65px;
+    margin-top: 43px;
+    width: 100%;
+}
+
+.user_links{
+    text-decoration: none;
+    color: black;
+}
+
+.user_links:hover{
+    color: black;
+    text-decoration: none;
+}

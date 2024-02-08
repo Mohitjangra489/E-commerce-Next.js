@@ -1,0 +1,38 @@
+.image_gif{
+    height: 416px;
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 37rem;
+
+}
+
+.success_main_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+}
+.gif_div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+}
+.lower_span_div{
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+margin-top: -35px;
+text-align: center;
+
+}
+

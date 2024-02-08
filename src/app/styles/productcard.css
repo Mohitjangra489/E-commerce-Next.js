@@ -1,0 +1,142 @@
+.product_card_div{
+    /* height: 30em; */
+    height: auto;
+    width: 33em;
+    /* border: 1px solid grey; */
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: shadow;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.product_outofstock_div{
+     height: auto;
+     width: 33em;
+     padding: 20px;
+     border-radius: 5px;
+     box-sizing: shadow;
+     margin: 20px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 10px;
+    filter:grayscale(1);
+    
+}
+.product_shimmer_container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.product_shimmer_card_div{
+    height: auto;
+    width: 33em;
+    /* border: 1px solid grey; */
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: shadow;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+}
+.productshimmer_image_div{
+   width: 100%;
+   height: 28em;
+   background-color: #dee3ed;
+   animation: shimmer 2s infinite linear;
+   background: linear-gradient(to right,#eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+   background-size: 1000px 100%;
+}
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+
+.addcart_shimmer_btn{
+    background-color: #dee3ed;
+    color: #dee3ed;
+    width: 100%;
+    border: none;
+}
+.card_shimmer_title{
+    height: 10px;
+    background-color: #dee3ed;
+}
+
+
+
+
+.card_title{
+    margin-bottom: 8px;
+    overflow: hidden;
+    height: 46px;
+
+}
+
+.product_image_div{
+    height: 28em;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+.image{
+    height:28em ;
+    width: 100%;
+    object-fit: contain;
+}
+.image:hover{
+    scale:1.2;
+    transition:0.2s ease-in-out ;
+}
+.card_rating{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+.card_body{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.addcart_div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addcart_link{
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+}
+.addcart_btn{
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.addcart_btn:hover{
+    scale: 1.1;
+    transition:0.2s ease-in-out ;
+
+}

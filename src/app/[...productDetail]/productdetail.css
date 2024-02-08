@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.product_image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.product_image_container {
+    width: 40%;
+    height: 100%;
+}
+
+.details_div {
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.upper_div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 71px;
+    display: flex;
+    align-items: center;
+}
+
+.product_namee_div {
+    width: 100%;
+    /* word-break: break-all; */
+    box-sizing: border-box;
+    font-size: 40px;
+    line-height: normal;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+
+.addtocart_div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cart_btn {
+    width: 50%;
+    text-align: center;
+    padding: 8px;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.rating_div {
+    margin-bottom: 10px;
+}
+
+.other_details {
+    font-size: 20px;
+}
+
+.checkpin_input {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.input_pin {
+    width: 70%;
+}

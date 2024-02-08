@@ -1,0 +1,200 @@
+.footer_container{
+    height:  calc(100% - 80px - 50em);
+    width: 100%
+}
+.Filter_Box_container{
+    height: 800px;
+    width: 300px;
+    left: 20px;
+    top: 40px;
+    border: 1px solid black;
+    background-color: aquamarine;
+    position: relative;
+}
+.social_links{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    font-family: "Barlow", sans-serif;
+    display: flex;
+    flex-direction: column;
+  
+    width: 100%;
+    color: white;
+    background-color: BLACK;
+    margin-top: 50px;
+  }
+  .width-100 {
+    width: 100%;
+  }
+  footer ul > li {
+    color:white;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+    margin: 20px auto;
+    
+  }
+  footer p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  .footerHeading {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #b59461;
+  }
+  .footerHeadingCont{
+    display: flex;
+    pointer-events: none;
+  }
+  .letterAndcontact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+
+  }
+  .inputsBtn {
+    width: 100%;
+    margin-top: 25px;
+  }
+  .inputsBtn input {
+    width: 384px;
+    /* height: 47px; */
+    padding: 14px 24px;
+    gap: 8px;
+  }
+  .inputsBtn button {
+    width: 184px;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: black;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+  }
+  .inputsBtn button:hover {
+    cursor: pointer;
+  }
+  
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    flex: 0.65;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .currency {
+    margin-top: 50px;
+  }
+  .inputsBtn {
+    display: flex;
+    column-gap: 10px;
+  }
+  
+  .actionsLinksContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding-top: 26px;
+    box-sizing: border-box;
+  }
+  .socialLinksContainer {
+    margin-bottom: 50px;
+  }
+  .socialAcc,
+  .payments {
+    display: flex;
+    column-gap: 10px;
+  }
+  
+  .copyright p {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px auto;
+    text-transform: capitalize;
+  }
+  .mt20 {
+    margin-top: 20px;
+    
+  }
+  .mt20>li{
+    list-style-type:circle;
+  }
+  
+  footer{
+    background-color: black;
+    color: white;
+    width: 100%;
+  }
+  .arrow_icons{
+    height: 30px;
+    width: 50px;
+    display: none;
+  }
+  .link_icons{
+    height: 30px;
+    width: 50px;
+  }
+  
+  @media screen and (max-width:680px){
+    .arrow_icons{
+        display:block;
+    }
+  .letterAndcontact{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.newsletter{
+  border-bottom: 2px solid white;
+    padding-bottom: 26px;
+    width: 100%;
+    /* padding-left: 102px; */
+
+}
+.contactDetails{
+  padding: 20px;
+  box-sizing: border-box;
+}
+.actionsLinksContainer{
+  flex-direction: column;
+ padding: 20px;
+  box-sizing: border-box;
+
+}
+.mettaMuse{
+  border-bottom: 2px solid white;
+
+}
+.quickLinks{
+  border-bottom: 2px solid white;
+}
+.paymentMethodsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.socialLinksContainer{
+  border-bottom: 2px solid white;
+
+}
+.footerHeadingCont{
+    pointer-events:all;
+
+}
+
+
+  }
