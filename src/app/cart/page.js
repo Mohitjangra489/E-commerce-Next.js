@@ -6,6 +6,7 @@ import CartItem from '@/app/components/CartItem';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
+import api from '../apiMiddleware';
 
 const Page = () => {
 
@@ -30,7 +31,7 @@ const Page = () => {
 
     async function fetchallcartItems(id) {
         let userid = id;
-        let req = await axios.get(`https://e-commerce-backend-next.vercel.app/allcartdata?id=${userid}`).then((res) => {
+        let req = await api.get(`/allcartdata?id=${userid}`).then((res) => {
             const data = res?.data[0].cartItems;
             console.log(data);
             setcartData(data);

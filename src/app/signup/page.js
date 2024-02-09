@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import api from '../apiMiddleware';
 
 
 function Signup() {
@@ -31,7 +32,7 @@ function Signup() {
           'Content-Type': 'application/json',
         },
       }
-      const res = await axios.post("http://localhost:8000/register",userDetails,config).catch((err) => {
+      const res = await api.post("/register",userDetails,config).catch((err) => {
         toast.error( err?.response?.data?.message);
         });
       if(res?.status==200)

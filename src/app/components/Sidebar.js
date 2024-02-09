@@ -78,30 +78,7 @@ const Sidebar = () => {
                    
                 </ul>
 
-                {/* <hr className="my-4" />
-
-                <h3 className="font-semibold mb-2">Ratings</h3>
-                <ul className="ratings_ul">
-                    
-                        {[5, 4, 3, 2, 1].map((rating) => (<li key={rating} >
-                            <label className="flex items-center">
-                                <input name="ratings" type="radio" value={rating}className="h-4 w-4"/>
-                                <span className="ml-2 text-gray-500">
-                                    {" "}
-                                    <StarRatings
-                                        rating={rating}
-                                        starRatedColor="#ffb829"
-                                        numberOfStars={5}   
-                                        starDimension="20px"
-                                        starSpacing="2px"
-                                        name="rating"
-                                    />{" "}
-                                </span>
-                            </label>
-                            </li>
-                        ))}
-                    
-                </ul> */}
+               
             </div>
 
         </div>

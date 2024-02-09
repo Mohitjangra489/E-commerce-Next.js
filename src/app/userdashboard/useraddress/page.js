@@ -4,13 +4,14 @@ import axios from 'axios';
 import "../useraddress/useraddress.css";
 import { ImLocation2 } from "react-icons/im";
 import Link from 'next/link';
+import api from '../../apiMiddleware';
 
 const Page = () => {
   const [allAddress,setallAddress]=useState([]);
 
   async function fetchalluseraddress(id) {
     let userid = id;
-    let req = await axios.get(`http://localhost:8000/alluseraddress?id=${userid}`).then((res) => {
+    let req = await api.get(`/alluseraddress?id=${userid}`).then((res) => {
         const data = res?.data?.addresses;
         console.log(data);
         setallAddress(data);

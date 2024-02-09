@@ -3,11 +3,12 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import Link from 'next/link';
 import '../success/success.css'
+import api from '../apiMiddleware';
 const Page = () => {
 
    
      const clearcart=async(id)=>{
-        let req = await axios.post(`http://localhost:8000/clearcart?id=${id}`).catch((error => console.log(error)));
+        let req = await api.post(`/clearcart?id=${id}`).catch((error => console.log(error)));
      }
 
     useEffect(()=>{

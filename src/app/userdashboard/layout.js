@@ -32,7 +32,6 @@ export default function Layout({ children }) {
   },[pathname]);
 
   useEffect(()=>{
-    console.log("inside userdashboard useeefect")
    const checkToken=setInterval(() => {
     const data=localStorage.getItem("UserData");
     if(!data){

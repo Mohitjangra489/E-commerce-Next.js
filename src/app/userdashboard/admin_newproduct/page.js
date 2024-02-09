@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import '../adminroutes.css';
 import axios from 'axios';
+import api from '../../apiMiddleware';
 const Page = () => {
   const [file, setfile] = useState(null);
   const [product, setProduct] = useState({category:"Advanced Fitness"});
@@ -45,7 +46,7 @@ const Page = () => {
         }
       }
 
-      const res = await axios.post("http://localhost:8000/newproduct", formData, config).catch((err) => toast.error(err.message));
+      const res = await api.post("/newproduct", formData, config).catch((err) => toast.error(err.message));
       if (res.status == 200) {
         setfile("");
       const emptyState = {

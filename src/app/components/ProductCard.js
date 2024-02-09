@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import api from '../apiMiddleware';
 
 
 const ProductCard = ({ product }) => {
@@ -36,7 +37,7 @@ const ProductCard = ({ product }) => {
 
       }
 
-      const res = await axios.post("http://localhost:8000/addcart", bodyData, config).catch((err) => {
+      const res = await api.post("/addcart", bodyData, config).catch((err) => {
         toast.error("Something went wrong!")
       });
       if(res.status==200){

@@ -3,6 +3,7 @@ import '../cart/cartpage.css';
 import axios, { all } from 'axios';
 
 import { CiSquarePlus, CiSquareMinus, CiSquareRemove } from "react-icons/ci";
+import api from '../apiMiddleware';
 
 const CartItem = ({ item, cartData, setcartData }) => {
 
@@ -13,7 +14,7 @@ const CartItem = ({ item, cartData, setcartData }) => {
     }
     else {
       let userid = userData?.user_id;
-      let req = await axios.delete(`http://localhost:8000/deletecartitem?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
+      let req = await api.delete(`/deletecartitem?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
         console.log(data);
         // setcartData(data);
@@ -37,7 +38,7 @@ const CartItem = ({ item, cartData, setcartData }) => {
     }
     else {
       let userid = userData?.user_id;
-      let req = await axios.post(`http://localhost:8000/pluscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
+      let req = await api.post(`/pluscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
         console.log(data);
 
@@ -69,7 +70,7 @@ const CartItem = ({ item, cartData, setcartData }) => {
       }
       else {
         let userid = userData?.user_id;
-        let req = await axios.post(`http://localhost:8000/minuscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
+        let req = await api.post(`/minuscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
           const data = res?.data;
           console.log(data);
 

@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Shimmer from '@/app/components/Shimmer';
 import ReactPaginate from 'react-paginate';
+import api from '../../apiMiddleware';
 
 
 const Page = () => {
@@ -33,7 +34,7 @@ const Page = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     let productid = e.target.id;
-    const res = await axios.delete(`http://localhost:8000/deleteproduct?id=${productid}`).catch((err) => toast.error(err.message));
+    const res = await api.delete(`/deleteproduct?id=${productid}`).catch((err) => toast.error(err.message));
     console.log(res);
     if (res.status == 200) {
       toast.success("Product Deleted successfully!");
@@ -52,7 +53,7 @@ const Page = () => {
 
   useEffect(() => {
     async function fetchallproducts() {
-      let req = await axios.get('http://localhost:8000/allproducts').then((res) => { setallProducts(res.data) });
+      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data) });
     };
     fetchallproducts();
 

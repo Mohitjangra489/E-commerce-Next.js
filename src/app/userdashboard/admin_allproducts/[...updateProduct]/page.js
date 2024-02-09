@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import api from '../../../apiMiddleware';
 
 const UpdateProduct = ({ params }) => {
   const router=useRouter();
@@ -53,7 +54,7 @@ const UpdateProduct = ({ params }) => {
         }
       }
 
-      const res = await axios.post(`http://localhost:8000/updateproductimage?id=${product_id}`, formData, config).catch((err) => toast.error(err.message));
+      const res = await api.post(`/updateproductimage?id=${product_id}`, formData, config).catch((err) => toast.error(err.message));
       if (res.status == 200) {
         setfile("");
         toast.success("Image Updated successfully!");
@@ -82,7 +83,7 @@ const UpdateProduct = ({ params }) => {
       }
 
 
-      const res = await axios.post(`http://localhost:8000/updateproduct?id=${product_id}`, data, config).catch((err) => toast.error(err.message));
+      const res = await api.post(`/updateproduct?id=${product_id}`, data, config).catch((err) => toast.error(err.message));
       if (res.status == 200) {
         const emptyState = {
           name: "",
@@ -120,7 +121,7 @@ const UpdateProduct = ({ params }) => {
        const headers={
         "Authorization":`bearer ${userData.token}`
        }
-      await axios.get(`http://localhost:8000/getproductdetails?id=${product_id}`,{headers}).then((res) => {
+      await api.get(`/getproductdetails?id=${product_id}`,{headers}).then((res) => {
         // console.log("response", res.data[0]);
         setupdatedProduct({
           name: res.data[0]?.name,
@@ -135,7 +136,6 @@ const UpdateProduct = ({ params }) => {
       }
       )
         .catch((error) => { 
-          console.log("dfcuvfbuhbf==========",error);
           if(error?.response?.data?.message=="Invalid Token")
           {
             localStorage.removeItem("UserData");

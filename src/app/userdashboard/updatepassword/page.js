@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Link from 'next/link';
+import api from '../../apiMiddleware';
 
 const Page = () => {
 
@@ -33,7 +34,7 @@ const Page = () => {
             current_password: current,
             new_password: newpassword,
           }
-          const res = await axios.post(`http://localhost:8000/changepassword`,formdata,config).catch((err) => toast.error(err.message));
+          const res = await api.post(`/changepassword`,formdata,config).catch((err) => toast.error(err.message));
           if (res.status == 200) {
             console.log(res.data);
             setcurrent("");

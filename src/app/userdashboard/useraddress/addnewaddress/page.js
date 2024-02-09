@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import '../addnewaddress/addnewaddress.css';
 import Link from 'next/link';
+import api from '../../../apiMiddleware';
 
 const Page = () => {
     const [address, setaddress] = useState({});
@@ -44,7 +45,7 @@ const Page = () => {
                     }
                 }
     
-                const res = await axios.post("http://localhost:8000/newaddress", formData, config).catch((err) => toast.error(err.message));
+                const res = await api.post("/newaddress", formData, config).catch((err) => toast.error(err.message));
                 if (res.status == 200) {
                    
                     const emptyState = {
