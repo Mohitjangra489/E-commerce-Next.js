@@ -26,7 +26,7 @@ function Login() {
           'Content-Type': 'application/json',
         },
       }
-      const res = await axios.post("logincheck",userDetails,config).catch((err) => {
+      const res = await axios.post("https://e-commerce-backend-next.vercel.app/logincheck",userDetails,config).catch((err) => {
         toast.error( err?.response?.data?.message);
         });
 

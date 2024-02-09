@@ -30,7 +30,7 @@ const Page = () => {
 
     async function fetchallcartItems(id) {
         let userid = id;
-        let req = await axios.get(`http://localhost:8000/allcartdata?id=${userid}`).then((res) => {
+        let req = await axios.get(`https://e-commerce-backend-next.vercel.app/allcartdata?id=${userid}`).then((res) => {
             const data = res?.data[0].cartItems;
             console.log(data);
             setcartData(data);
