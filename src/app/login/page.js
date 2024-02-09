@@ -7,6 +7,7 @@ import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, M
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import api from '../apiMiddleware';
 
 
 function Login() {
@@ -26,7 +27,7 @@ function Login() {
           'Content-Type': 'application/json',
         },
       }
-      const res = await axios.post("https://e-commerce-backend-next.vercel.app/logincheck",userDetails,config).catch((err) => {
+      const res = await api.post("/logincheck",userDetails,config).catch((err) => {
         toast.error( err?.response?.data?.message);
         });
 

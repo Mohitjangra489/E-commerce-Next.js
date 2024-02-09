@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import api from './apiMiddleware'
 import ProductCard from './components/ProductCard';
 import ReactPaginate from 'react-paginate';
 import { useRouter } from 'next/navigation';
@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchallproducts() {
-      let req = await axios.get('https://e-commerce-backend-next.vercel.app/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) });
+      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) });
     };
     fetchallproducts();
     setisLoading(false);
