@@ -37,7 +37,7 @@ app.use(cors({
 
 app.use((req, res, next) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'https://optimum-nutrition.vercel.app/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://optimum-nutrition.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,POST,DELETE,PUT');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
