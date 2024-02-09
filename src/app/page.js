@@ -55,7 +55,7 @@ export default function Home() {
     else
     {
       let products = [...totalProducts];
-      let filtered = products.filter((product) => {
+      let filtered = products?.filter((product) => {
         return (product.category==category);
       })
 
@@ -68,7 +68,7 @@ export default function Home() {
     console.log(category);
     if (category !== "All") {
       let products = [...totalProducts];
-      let filtered = products.filter((product) => {
+      let filtered = products?.filter((product) => {
         return (product.category==category);
       })
       setallProducts(filtered);
@@ -88,8 +88,8 @@ export default function Home() {
       return <ProductNotFound />
     }
     else {
-      return (currentItems.map((product) => {
-        return <ProductCard product={product} key={product._id} />
+      return (currentItems?.map((product) => {
+        return <ProductCard product={product} key={product?._id} />
       }))
     }
   }
