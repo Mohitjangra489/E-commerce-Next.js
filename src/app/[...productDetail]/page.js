@@ -6,6 +6,7 @@ import StarRatings from "react-star-ratings";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
+import api from '../apiMiddleware';
 
 
 const Page = ({ params }) => {
@@ -41,7 +42,7 @@ const Page = ({ params }) => {
 
             }
 
-            const res = await axios.post("http://localhost:8000/addcart", bodyData, config).catch((err) => {
+            const res = await api.post("/addcart", bodyData, config).catch((err) => {
                 toast.error("Something went wrong!")
             });
             if (res.status == 200) {
@@ -56,8 +57,7 @@ const Page = ({ params }) => {
             const headers = {
                 "Authorization": `bearer ${userData.token}`
             }
-            await axios.get(`http://localhost:8000/getproductdetails?id=${product_id}`, { headers }).then((res) => {
-                // console.log("response", res.data[0]);
+            await api.get(`/getproductdetails?id=${product_id}`, { headers }).then((res) => {
                 setproductData(res.data[0])
                 setproductRating(Number(res.data[0].ratings));
                 setisloaded(true);
