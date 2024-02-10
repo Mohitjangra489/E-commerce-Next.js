@@ -94,5 +94,12 @@ background-color: black;
 @media screen and (max-width:680px){
    .product_list_div{
       width: 96vw;
+      gap: 0px;
    }
+   .pagination_container{
+      position: absolute;
+      width: auto;
+      margin-left: 1rem;
+   }
+   
 }

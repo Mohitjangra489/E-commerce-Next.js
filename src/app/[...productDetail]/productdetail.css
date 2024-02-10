@@ -76,3 +76,34 @@
 .input_pin {
     width: 70%;
 }
+.check_checkbtn{
+border: none;
+background-color:black ;
+color: white;
+}
+
+@media screen and (max-width:680px){
+    .upper_div{
+        flex-direction: column;
+        gap: 0px;
+    }
+    .details_div{
+        width: 100%;
+        text-align: center;
+    }
+    .cart_btn{
+        width: 100%;
+    }
+    .input_pin{
+        width: 100%;
+    }
+    .check_checkbtn{
+        padding: 8px;
+    }
+    .checkpin_input{
+        flex-direction: column;
+    }
+    .product_image_container{
+        width: 100%;
+    }
+ }

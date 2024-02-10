@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
           />
 
         </div>
-        <h2>{product?.price} ₹</h2>
+        <h2> ₹{product?.price} </h2>
       </div>
       <div className='addcart_div'>
         {product?.stock !== "0" ? <button className='addcart_btn' onClick={handleAddToCart}>ADD TO CART</button> : <button className='addcart_btn' >OUT OF STOCK</button>}

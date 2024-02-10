@@ -40,11 +40,9 @@ const CartItem = ({ item, cartData, setcartData }) => {
       let userid = userData?.user_id;
       let req = await api.post(`/pluscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
-        console.log(data);
 
         if (res.status == 200) {
 
-          console.log("inside res.status", res.status, cartData, [...cartData]);
           let alldata = [...cartData];
 
           for (let i = 0; i < alldata.length; i++) {
@@ -54,7 +52,6 @@ const CartItem = ({ item, cartData, setcartData }) => {
             }
           }
 
-          console.log(alldata);
           setcartData(alldata);
         }
 
@@ -72,11 +69,8 @@ const CartItem = ({ item, cartData, setcartData }) => {
         let userid = userData?.user_id;
         let req = await api.post(`/minuscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
           const data = res?.data;
-          console.log(data);
 
           if (res.status == 200) {
-
-            console.log("inside res.status", res.status, cartData, [...cartData]);
             let alldata = [...cartData];
 
             for (let i = 0; i < alldata.length; i++) {
@@ -88,15 +82,13 @@ const CartItem = ({ item, cartData, setcartData }) => {
 
               }
             }
-
-            console.log(alldata);
             setcartData(alldata);
           }
 
         }).catch((error => console.log(error)));
       }
     }
-    
+
 
   }
   return (
@@ -105,23 +97,22 @@ const CartItem = ({ item, cartData, setcartData }) => {
         <h1>{item?.name}</h1>
       </div>
       <div className='cartitems_main_container'>
-        <div >
-          <div className='ist_div'>
-            <div>
-              <img src={item?.image} alt='product' className='item_image' />
-            </div>
-            <div>
-              <span className='heading_span'>Flavour</span><br></br>
-              <span>Chocolate</span>
-            </div>
+
+
+        <div className='ist_div'>
+          <div>
+            <img src={item?.image} alt='product' className='item_image' />
           </div>
         </div>
-
-        <div>
+        <div className='second_div'>
+          <div>
+            <span className='heading_span'>Flavour</span><br></br>
+            <span>Chocolate</span>
+          </div>
+          <div>
           <span className='heading_span'>Each</span><br></br>
           <span>₹{item.price_per_piece}</span>
         </div>
-
         <div>
           <label className='heading_span'>Quantity</label>
           <div>
@@ -130,7 +121,6 @@ const CartItem = ({ item, cartData, setcartData }) => {
             <CiSquareMinus className='minus' cursor="pointer" onClick={handledecreasequantity} />
           </div>
         </div>
-
         <div>
           <span className='heading_span'>Total</span><br></br>
           <span>₹{item.total_price}</span>
@@ -139,6 +129,8 @@ const CartItem = ({ item, cartData, setcartData }) => {
         <div className='remove_div'>
           <CiSquareRemove className='plus' onClick={handleDeleteCartitem} cursor="pointer" />
         </div>
+        </div>
+
       </div>
 
     </div>

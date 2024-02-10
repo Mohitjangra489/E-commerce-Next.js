@@ -195,6 +195,9 @@ footer {
     pointer-events:all;
 
 }
+.inputsBtn input{
+  height: auto;
+}
 
 
   }

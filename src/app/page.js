@@ -112,11 +112,11 @@ export default function Home() {
       <div className='pagination_container'>
         <ReactPaginate
           breakLabel="..."
-          nextLabel="Next >"
+          nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={1}
           pageCount={pageCount}
-          previousLabel="< Prev"
+          previousLabel="<"
           renderOnZeroPageCount={null}
           previousLinkClassName='prev_link'
           nextLinkClassName='next_link'

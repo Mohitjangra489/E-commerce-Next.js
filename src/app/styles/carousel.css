@@ -9,6 +9,8 @@ body{
 
 @media screen and (max-width: 600px){
    .w-100{
-    height:auto;
+    height: 300px;
+    object-fit: fill;
+
    }
 }

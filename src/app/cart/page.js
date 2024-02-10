@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
 import api from '../apiMiddleware';
+import { toast } from 'react-toastify';
 
 const Page = () => {
 
@@ -60,7 +61,7 @@ const Page = () => {
                 const headers = {
                     "content-Type": "application/json",
                 }
-                const res = await fetch("http://localhost:8000/checkoutsession", {
+                const res = await fetch("https://e-commerce-backend-next.vercel.app/checkoutsession", {
                     method: "POST",
                     headers: headers,
                     body: JSON.stringify(body)
@@ -99,14 +100,14 @@ const Page = () => {
 
     return (
         <div className='cartpage_container'>
-            <div>
+            <div className='yourcart_div'>
                 <span className='Your_cart'>Your Cart<span className='special_span'>{!cartData.length!=0 &&"(Empty)"}</span></span>
             </div>
             <div>
                 <div className='cartpage_other_spans'>
                     <span ><Link href="/" style={{ color: "grey" }}>Continue Shopping </Link> </span>
                     <span>{cartData.length} items</span>
-                    <span>Need Help? Call(600)947-4382</span>
+                    <span className='need_help_span'>Need Help? Call(600)947-4382</span>
                 </div>
                 <div style={{ marginBottom: "10px" }}>
                     {
@@ -138,7 +139,7 @@ const Page = () => {
                                 <label>Enter Promo Code</label>
                                 <div className='promo_div'>
                                     <input type='text' placeholder='Promo Code' style={{ padding: "5px", width: "100%" }} />
-                                    <button className='sub_btn'>Submit</button>
+                                    <button className='sub_btn' >Submit</button>
                                 </div>
                                 <div style={{ lineHeight: "2.5" }}>
                                     <h1>Promotions</h1>

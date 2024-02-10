@@ -1,38 +1,42 @@
-
-.header_container{
-   background-color: black;
-   color: white;
+.header_container {
+    background-color: black;
+    color: white;
     height: 70px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-border-bottom: 1px solid grey;
-position: sticky;
-top: 0px;
-z-index: 2;
+    border-bottom: 1px solid grey;
+    position: sticky;
+    top: 0px;
+    z-index: 5;
 }
-.header_logo_div{
+
+.header_logo_div {
     display: flex;
     gap: 30px;
     padding: 10px;
     align-items: center;
 }
-.header_logo_div>img{
+
+.header_logo_div>img {
     height: 30px;
 }
-.header_right_container{
+
+.header_right_container {
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 10px;
 }
-.header_button_div{
+
+.header_button_div {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.search_btn{
+
+.search_btn {
     padding: 9px;
     border: 1px solid white;
     margin-left: 2px;
@@ -40,68 +44,87 @@ z-index: 2;
     color: white;
 
 }
-.search{
+
+.search {
     padding: 10px;
     outline: none;
     border: none;
     width: 38rem;
 }
-.react-icons{
-    width:3.5em;
+
+.react-icons {
+    width: 3.5em;
     height: 3.5em;
     cursor: pointer;
     color: white;
     text-decoration: none;
 }
-/* .react-icons[data-title]:hover::after{
-    content: attr(data-title);
-background-color: black;
-color: white;
-} */
 
-.search_div{
+.search_div {
     display: flex;
 }
-.hamburger{
-    width:3.5em;
+
+.hamburger {
+    width: 3.5em;
     height: 3.5em;
     cursor: pointer;
     display: none;
 }
-.user_profile_image{
+
+.user_profile_image {
     height: 33px;
     width: 33px;
     border-radius: 50%;
     object-fit: contain;
     box-sizing: border-box;
 }
+
 /* ...........................................................................media query */
 @media (max-width:700px) {
-    .search_div{
+    .search_div {
         order: 3;
     }
-    .user_profile_image{
+
+    .user_profile_image {
         height: 23px;
         width: 23px;
     }
-    .header_container{
+
+    .header_container {
         height: 130px;
         flex-wrap: wrap;
     }
-    .search_div{
+
+    .search_div {
         width: 20rem;
         margin-left: 20px;
     }
-    .react-icons{
-        width:2.0em;
+
+    .react-icons {
+        width: 2.0em;
         height: 2.0em;
     }
-    .search{
+
+    .search {
         padding: 5px;
     }
-    .hamburger{
+
+    .hamburger {
         display: block;
-        width:2.0em;
+        width: 2.0em;
         height: 2.0em;
+    }
+
+    .header_container {
+        height: 160px;
+    }
+    .header_logo_div{
+        padding: 0px;
+    }
+    .header_right_container{
+       gap: 10px;
+    }
+    .header_button_div{
+        gap: 10px;
     }
 }

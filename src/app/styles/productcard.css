@@ -107,6 +107,7 @@
     align-items: center;
     width: 100%;
     justify-content: center;
+    margin-bottom: 10px;
 }
 .card_body{
     width: 100%;

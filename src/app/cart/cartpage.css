@@ -43,6 +43,7 @@
     width: 100%;
     box-sizing: border-box;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .ist_div{
@@ -142,4 +143,41 @@ box-sizing: border-box;
     font-size: 21px;
     color: grey;
     margin-left: 10px
+}
+.second_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (max-width:700px) {
+    .right_div{
+        width: 100%;
+    }
+    .left_div{
+        width: 100%;
+    }
+    .yourcart_div{
+        width: 100%;
+    text-align: center;
+    }
+    .cartpage_container{
+        padding: 10px;
+    }
+    .cartpage_main_div{
+        flex-direction: column;
+    }
+    .cartitems_main_container{
+        flex-direction: column;
+    }
+    .Your_cart{
+        font-size: 4rem;
+    }
+    .need_help_span{
+        display: none;
+    }
+    .no_cart_div{
+        margin-left: 0px;
+    }
 }

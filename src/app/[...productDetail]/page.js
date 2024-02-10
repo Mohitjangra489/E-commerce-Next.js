@@ -101,7 +101,7 @@ const Page = ({ params }) => {
                                     <span>{productData?.name}</span>
                                 </div>
                                 <div>
-                                    <p style={{ wordSpacing: "3px" }}>{productData?.description}</p>
+                                    <p style={{ wordSpacing: "3px" ,textAlign: "justify"}}>{productData?.description}</p>
                                 </div>
                                 <div className='rating_div'>
                                     <StarRatings
@@ -114,10 +114,10 @@ const Page = ({ params }) => {
                                     />
                                 </div>
                                 <div className='other_details'>
-                                    <span>Price:₹{productData?.price}</span><br></br>
-                                    <span>Sold By {productData?.seller}</span><br></br>
-                                    <span>Flavour -{productData?.flavour}</span><br></br>
-                                    <span>Size -{productData?.size}</span><br></br>
+                                    <span>Price: ₹{productData?.price}</span><br></br>
+                                    <span>Flavour: {productData?.flavour}</span><br></br>
+                                    <span>Size: {productData?.size}</span><br></br>
+                                    <span style={{fontSize: "1rem",fontWeight: "600"}}>Sold By {productData?.seller}</span><br></br>
                                 </div>
 
                             </div>
@@ -129,8 +129,8 @@ const Page = ({ params }) => {
                                 <div className='check_pincode_div'>
                                     <label>CHECK PIN CODE SERVICEABILITY</label>
                                     <div className='checkpin_input'>
-                                        <input type='text' className='input_pin'></input>
-                                        <button style={{ border: "none", backgroundColor: "black", color: "white" }}>CHECK</button>
+                                        <input type='text' className='input_pin' placeholder='330223'></input>
+                                        <button  className='check_checkbtn'>CHECK</button>
                                     </div>
 
                                 </div>
