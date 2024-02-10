@@ -13,7 +13,6 @@ import Link from 'next/link';
 import SearchContext from './Context';
 
 const Header = () => {
-  const [isSidebarHidden, setisSideBarHidden] = useState(true);
   const [isLogged, setisLogged] = useState(false);
   const [searchValue, setsearchValue] = useContext(SearchContext);
   const router = useRouter();
@@ -21,8 +20,6 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("UserData");
     setisLogged(false);
-    //  router.push("/login");
-
   }
 
   useEffect(() => {
@@ -36,8 +33,6 @@ const Header = () => {
   });
   return (
     <div className='header_container'>
-
-      <RxHamburgerMenu className='hamburger' />
 
       <div className='header_logo_div'>
         <Link href="/"> <img src="https://cdn.staticans.com/image/catalog/optimum/logo/396-2023_02_23-optimum_nutrition_logo.png" alt='logo' title='Home'></img></Link>
@@ -78,10 +73,7 @@ const Header = () => {
           }
 
         </div>
-
       </div>
-
-
     </div>
   )
 }

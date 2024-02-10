@@ -32,7 +32,6 @@ function Login() {
         });
 
       if (res?.status == 200) {
-        console.log("response of login",res);
         let localstoragedata=JSON.stringify(res?.data?.data);
         localStorage.setItem("UserData",localstoragedata);
         toast.success("Logged in successfully!");

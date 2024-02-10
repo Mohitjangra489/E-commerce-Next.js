@@ -35,7 +35,7 @@ const Page = () => {
     e.preventDefault();
     let productid = e.target.id;
     const res = await api.delete(`/deleteproduct?id=${productid}`).catch((err) => toast.error(err.message));
-    console.log(res);
+    
     if (res.status == 200) {
       toast.success("Product Deleted successfully!");
       let products = [...allProducts];
@@ -43,7 +43,6 @@ const Page = () => {
         return item._id != productid;
       })
       setallProducts(remain);
-      console.log(remain);
     }
     else {
       toast.error(res.message)

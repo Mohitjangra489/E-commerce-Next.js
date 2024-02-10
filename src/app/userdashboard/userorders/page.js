@@ -8,7 +8,6 @@ const Page = () => {
   useEffect(()=>{
     const  getTransactions=async()=>{
       let res= await api.get('/stripetransactionslist').then((data)=>{
-    console.log("stripe transactions",data);
       });
     }
 

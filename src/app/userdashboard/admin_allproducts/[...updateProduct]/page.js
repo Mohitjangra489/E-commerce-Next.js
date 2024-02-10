@@ -122,7 +122,6 @@ const UpdateProduct = ({ params }) => {
         "Authorization":`bearer ${userData.token}`
        }
       await api.get(`/getproductdetails?id=${product_id}`,{headers}).then((res) => {
-        // console.log("response", res.data[0]);
         setupdatedProduct({
           name: res.data[0]?.name,
           description: res.data[0]?.description,

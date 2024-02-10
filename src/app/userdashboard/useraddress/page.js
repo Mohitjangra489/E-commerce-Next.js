@@ -13,7 +13,6 @@ const Page = () => {
     let userid = id;
     let req = await api.get(`/alluseraddress?id=${userid}`).then((res) => {
         const data = res?.data?.addresses;
-        console.log(data);
         setallAddress(data);
 
     }).catch((error => console.log(error)));

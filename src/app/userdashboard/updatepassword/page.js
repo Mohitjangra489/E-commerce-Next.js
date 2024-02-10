@@ -36,7 +36,6 @@ const Page = () => {
           }
           const res = await api.post(`/changepassword`,formdata,config).catch((err) => toast.error(err.message));
           if (res.status == 200) {
-            console.log(res.data);
             setcurrent("");
             setconfirmnewpassword("");
             setnewpassword("");

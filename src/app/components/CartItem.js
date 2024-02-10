@@ -16,14 +16,11 @@ const CartItem = ({ item, cartData, setcartData }) => {
       let userid = userData?.user_id;
       let req = await api.delete(`/deletecartitem?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
-        console.log(data);
-        // setcartData(data);
+
         if (res.status == 200) {
-          console.log("inside res.status", res.status, cartData, [...cartData]);
           let updatedcartdata = cartData.filter((cartitem) => {
             return cartitem.product_id != item.product_id;
           });
-          console.log(updatedcartdata);
           setcartData(updatedcartdata);
         }
 

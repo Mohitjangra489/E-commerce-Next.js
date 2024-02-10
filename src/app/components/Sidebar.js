@@ -13,31 +13,14 @@ const Sidebar = () => {
   const [searchValue, setsearchValue,filterCategory,setfilterCategory] = useContext(SearchContext);
 
     const handleFilterByCategory=(e)=>{
-        console.log( e.target.checked,e.target.value)
         setfilterCategory(e.target.value);
     }
 
     return (
         <div className='sidebar_container'>
-           <h1> Filter By Goal</h1>
-            <div className='sidebar_setprice'>
-                <h1>Price(₹)</h1>
-                <div className="setprice_btn_div">
-                    <div className="btn-div">
-                        <input name="min" type="number"  placeholder="Min" className='input' />
-                    </div>
-
-                    <div className="btn-div">
-                        <input name="max" type="number"  placeholder="Max" className='input' />
-                    </div>
-
-                    <div className="btn-div">
-                        <button className='price_btn'>Go</button>
-                    </div>
-                </div>
-            </div>
+           
             <div style={{ paddingLeft: "12px"}}>
-                <h3 >Category</h3>
+                <h1 > Filter By Category</h1>
                 <ul  className='sidebar_ul'>
                     <li>
                         <label >
@@ -77,8 +60,6 @@ const Sidebar = () => {
                     </li>
                    
                 </ul>
-
-               
             </div>
 
         </div>

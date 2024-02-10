@@ -65,7 +65,6 @@ export default function Home() {
 
   useEffect(() => {
     let category = filterCategory;
-    console.log(category);
     if (category !== "All") {
       let products = [...totalProducts];
       let filtered = products?.filter((product) => {
@@ -74,7 +73,6 @@ export default function Home() {
       setallProducts(filtered);
     }
     else {
-      console.log("inside elseif",category)
       setallProducts([...totalProducts]);
     }
   }, [filterCategory]);
