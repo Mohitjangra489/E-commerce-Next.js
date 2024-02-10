@@ -42,7 +42,7 @@
 .form_submit_btn{
     width: 100%;
     padding: 15px;
-    border-radius: 10em;
+    /* border-radius: 10em; */
     background-color: black;
     color: white;
     border: none;
@@ -148,8 +148,7 @@ table {
     width: 3.5em;
     height: 3.5em;
     cursor: pointer;
-    /* color: white; */
-    /* text-decoration: none; */
+
   }
   .form1_data{
     width: 85%;
@@ -163,4 +162,17 @@ table {
     background-color: white;
     /* box-shadow: 8px 8px 9px -5px grey; */
     border: 1px solid grey;
+  }
+
+  @media (max-width:700px) {
+    .products_container{
+        overflow: scroll;
+    }
+     .delete_image{
+        width: 2em;
+        height: 2em;
+     }
+     .form_data{
+        width: 100%;
+     }
   }

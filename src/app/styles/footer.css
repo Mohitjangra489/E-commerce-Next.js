@@ -198,6 +198,10 @@ footer {
 .inputsBtn input{
   height: auto;
 }
+.inputsBtn{
+  column-gap: 0px;
+}
+
 
 
   }

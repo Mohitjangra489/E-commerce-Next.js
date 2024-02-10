@@ -49,7 +49,7 @@ export default function Layout({ children }) {
       <div className='userdashboard_container'>
         <div className='user_title'>
           {
-            pathname.includes("/admin_") && isAdmin==true ? <span>Admin Dashboard</span> : <span>User Dashboard</span>
+            pathname.includes("/admin_") && isAdmin==true ? <span className='userrr_dash'>Admin Dashboard</span> : <span className='userrr_dash'>User Dashboard</span>
           }
         </div>
         <div className='user_main_body'>
@@ -79,7 +79,6 @@ export default function Layout({ children }) {
           </div>
         </div>
       </div>
-
     </>
   )
 }

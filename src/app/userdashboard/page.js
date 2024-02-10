@@ -6,19 +6,34 @@ import { useRouter } from 'next/navigation';
 import { ImLocation2 } from "react-icons/im";
 import { FaUserEdit } from "react-icons/fa";
 import { GiHouseKeys } from "react-icons/gi";
+import { BsDatabaseFill,BsDatabaseFillAdd } from "react-icons/bs";
+import { PiUserListFill } from "react-icons/pi";
+import { PiCodesandboxLogoFill } from "react-icons/pi";
+
+
 
 
 const Page = () => {
   const [user, setuser] = useState("");
+  const [isAdmin, setisAdmin] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
     let userData = JSON.parse(localStorage.getItem("UserData"));
+
     if (!userData) {
       localStorage.removeItem("UserData");
       router.push("/");
     }
     else {
+      if(userData?.role=="Admin")
+      {
+     setisAdmin(true);
+      }
+      else{
+        setisAdmin(false);
+      }
       setuser(userData);
     }
   }, [])
@@ -30,11 +45,11 @@ const Page = () => {
           <img src='https://e7.pngegg.com/pngimages/980/304/png-clipart-computer-icons-user-profile-avatar-heroes-silhouette.png'
             className='user_image'
           />
-          <span style={{ color: "black", fontSize: "2.5rem" }}>{user.username}</span>
+          <span className='username_span'>{user.username}</span>
         </div>
-        <div>
+        {/* <div>
           <button className='edit_profile_btn'>Edit Profile</button>
-        </div>
+        </div> */}
 
       </div>
       <div className='profile_lower_div'>
@@ -58,13 +73,47 @@ const Page = () => {
             Edit Profile
           </div>
         </Link>
+
         <Link href="/userdashboard/updatepassword" className='user_links'>
           <div className='profile_lower_div_divs'>
             <GiHouseKeys className='all_icons' />
             Change Password
           </div>
         </Link>
+{
+  isAdmin &&(
+    <>
+      <Link href="/userdashboard/admin_newproduct" className='user_links'>
+          <div className='profile_lower_div_divs'>
+            <BsDatabaseFillAdd className='all_icons' />
+            Add New Product <span className='admin_span'>(Admin)</span>
+          </div>
+        </Link>
+        <Link href="/userdashboard/admin_allproducts" className='user_links'>
+          <div className='profile_lower_div_divs'>
+            <BsDatabaseFill className='all_icons' />
+            All Products<span className='admin_span'>(Admin)</span>
+          </div>
+        </Link>
 
+        <Link href="/userdashboard/admin_allorders" className='user_links'>
+          <div className='profile_lower_div_divs'>
+            <PiCodesandboxLogoFill className='all_icons' />
+            All Orders<span className='admin_span'>(Admin)</span>
+          </div>
+        </Link>
+
+        <Link href="/userdashboard/admin_allusers" className='user_links'>
+          <div className='profile_lower_div_divs'>
+            <PiUserListFill className='all_icons' />
+            All Users<span className='admin_span'>(Admin)</span>
+          </div>
+        </Link>
+    </>
+
+  )
+}
+      
 
       </div>
     </div>
