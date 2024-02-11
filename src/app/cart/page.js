@@ -8,12 +8,14 @@ import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
 import api from '../apiMiddleware';
 import { toast } from 'react-toastify';
+import SpinnerLoader from '../components/SpinnerLoader';
 
 const Page = () => {
 
     const [cartData, setcartData] = useState([]);
     const [subTotal, setsubTotal] = useState(0);
     const [discount, setdiscount] = useState(0);
+    const [isloading, setisloading] = useState(true);
     const router = useRouter();
 
     const subtotalPrice = () => {
@@ -34,8 +36,8 @@ const Page = () => {
         let userid = id;
         let req = await api.get(`/allcartdata?id=${userid}`).then((res) => {
             const data = res?.data[0].cartItems;
-            console.log(data);
             setcartData(data);
+            setisloading(false);
 
         }).catch((error => console.log(error)));
     };
@@ -97,88 +99,92 @@ const Page = () => {
         subtotalPrice();
     }, [cartData])
 
-
     return (
         <div className='cartpage_container'>
             <div className='yourcart_div'>
-                <span className='Your_cart'>Your Cart<span className='special_span'>{!cartData.length!=0 &&"(Empty)"}</span></span>
+                <span className='Your_cart'>Your Cart<span className='special_span'>{(!cartData.length != 0 && isloading==false) ?("(Empty)"):""}</span></span>
             </div>
-            <div>
-                <div className='cartpage_other_spans'>
-                    <span ><Link href="/" style={{ color: "grey" }}>Continue Shopping </Link> </span>
-                    <span>{cartData.length} items</span>
-                    <span className='need_help_span'>Need Help? Call(600)947-4382</span>
-                </div>
-                <div style={{ marginBottom: "10px" }}>
-                    {
-                        (subTotal >= 999 && cartData.length!=0) ? <span style={{ color: "green", paddingLeft: "5px", fontWeight: "bold" }}>You are eligible for free delivery!</span>
-                            : cartData.length!=0 && <span style={{ color: "red", paddingLeft: "5px", fontWeight: "bold" }} >You are ₹{999 - subTotal} away from free delivery!</span>
-                    }
-                </div>
+            {
+                isloading ? <SpinnerLoader /> : (
+                    <>
+                        <div className='cartpage_other_spans'>
+                            <span ><Link href="/" style={{ color: "grey" }}>Continue Shopping </Link> </span>
+                            <span>{cartData.length} items</span>
+                            <span className='need_help_span'>Need Help? Call(600)947-4382</span>
+                        </div>
+                        <div style={{ marginBottom: "10px" }}>
+                            {
+                                (subTotal >= 999 && cartData.length != 0) ? <span style={{ color: "green", paddingLeft: "5px", fontWeight: "bold" }}>You are eligible for free delivery!</span>
+                                    : cartData.length != 0 && <span style={{ color: "red", paddingLeft: "5px", fontWeight: "bold" }} >You are ₹{999 - subTotal} away from free delivery!</span>
+                            }
+                        </div>
 
-                <div className='cartpage_main_div'>
-                    <div className='left_div'>
-                        {cartData.length!=0? (
-                            cartData.map((item) => {
-                                return <CartItem item={item} cartData={cartData} setcartData={setcartData} key={item.product_id} />
-                            })
-                        ) :(
-                            <div className='no_cart_div'>
-                              <img src='https://nothingfromchina.com/pub/static/frontend/MageBig/martfury_layout05/en_US/images/empty-cart.svg' className='no_cart_img'/>
-                            </div>
-                        ) 
-                        }
-
-                    </div>
-                    {
-                        cartData.length!=0 ?(
-                            <div className="right_div">
-                                <div className="order_summary">
-                                    <span>Order Summary</span>
-                                </div>
-                                <label>Enter Promo Code</label>
-                                <div className='promo_div'>
-                                    <input type='text' placeholder='Promo Code' style={{ padding: "5px", width: "100%" }} />
-                                    <button className='sub_btn' >Submit</button>
-                                </div>
-                                <div style={{ lineHeight: "2.5" }}>
-                                    <h1>Promotions</h1>
-                                    <div className='free_shipping_div'>
-                                        <span>Free Shipping on Orders Above ₹999</span>
-                                        <span>-₹40</span>
+                        <div className='cartpage_main_div'>
+                            <div className='left_div'>
+                                {cartData.length != 0 ? (
+                                    cartData.map((item) => {
+                                        return <CartItem item={item} cartData={cartData} setcartData={setcartData} key={item.product_id} />
+                                    })
+                                ) : (
+                                    <div className='no_cart_div'>
+                                        <img src='https://nothingfromchina.com/pub/static/frontend/MageBig/martfury_layout05/en_US/images/empty-cart.svg' className='no_cart_img' />
                                     </div>
-                                    <div>
-                                        <ul style={{ paddingLeft: "0px" }}>
-                                            <li className='order_summary_li'>
-                                                <span className="key">Subtotal</span>
-                                                <span className="value">₹{subTotal}</span>
-                                            </li>
-                                            <li className='order_summary_li'>
-                                                <span className="key">Shipping Cost</span>
-                                                <span className="value">₹40</span>
-                                            </li>
-                                            <li className='order_summary_li'>
-                                                <span className="key">Shipping Discount</span>
-                                                <span className="value">{subTotal > 999 ? "-₹40" : "₹0"}</span>
-                                            </li>
-
-                                            <li className='order_summary_li'>
-                                                <span className="key">Estimated Total</span>
-                                                <span className="value">₹{subTotal > 999 ? subTotal : Number(subTotal) + 40}</span>
-                                            </li>
-                                        </ul>
-                                        <button className='checkout_btn' onClick={handleCheckout}>CHECKOUT</button>
-                                    </div>
-                                </div>
+                                )
+                                }
 
                             </div>
-                        ):""
-                    }
+                            {
+                                cartData.length != 0 ? (
+                                    <div className="right_div">
+                                        <div className="order_summary">
+                                            <span>Order Summary</span>
+                                        </div>
+                                        <label>Enter Promo Code</label>
+                                        <div className='promo_div'>
+                                            <input type='text' placeholder='Promo Code' style={{ padding: "5px", width: "100%" }} />
+                                            <button className='sub_btn' >Submit</button>
+                                        </div>
+                                        <div style={{ lineHeight: "2.5" }}>
+                                            <h1>Promotions</h1>
+                                            <div className='free_shipping_div'>
+                                                <span>Free Shipping on Orders Above ₹999</span>
+                                                <span>-₹40</span>
+                                            </div>
+                                            <div>
+                                                <ul style={{ paddingLeft: "0px" }}>
+                                                    <li className='order_summary_li'>
+                                                        <span className="key">Subtotal</span>
+                                                        <span className="value">₹{subTotal}</span>
+                                                    </li>
+                                                    <li className='order_summary_li'>
+                                                        <span className="key">Shipping Cost</span>
+                                                        <span className="value">₹40</span>
+                                                    </li>
+                                                    <li className='order_summary_li'>
+                                                        <span className="key">Shipping Discount</span>
+                                                        <span className="value">{subTotal > 999 ? "-₹40" : "₹0"}</span>
+                                                    </li>
 
-                </div>
-            </div>
+                                                    <li className='order_summary_li'>
+                                                        <span className="key">Estimated Total</span>
+                                                        <span className="value">₹{subTotal > 999 ? subTotal : Number(subTotal) + 40}</span>
+                                                    </li>
+                                                </ul>
+                                                <button className='checkout_btn' onClick={handleCheckout}>CHECKOUT</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                ) : ""
+                            }
+
+                        </div>
+                    </>
+                )}
+
         </div>
     )
+    
 }
 
 export default Page

@@ -25,6 +25,7 @@ export default function RootLayout({ children, pageProps }) {
 
   return (
     <html lang="en">
+      <title>Optimum Nutrition</title>
       <body >
         <SearchContext.Provider value={[searchValue, setsearchValue,filterCategory,setfilterCategory]}>
           <div className='mainlayout_container'>

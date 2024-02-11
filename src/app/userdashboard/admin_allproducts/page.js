@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Shimmer from '@/app/components/Shimmer';
 import ReactPaginate from 'react-paginate';
 import api from '../../apiMiddleware';
+import SpinnerLoader from '@/app/components/SpinnerLoader';
 
 
 const Page = () => {
@@ -35,7 +36,7 @@ const Page = () => {
     e.preventDefault();
     let productid = e.target.id;
     const res = await api.delete(`/deleteproduct?id=${productid}`).catch((err) => toast.error(err.message));
-    
+
     if (res.status == 200) {
       toast.success("Product Deleted successfully!");
       let products = [...allProducts];
@@ -58,7 +59,7 @@ const Page = () => {
 
   }, [])
 
-  return (allProducts.length === 0) ? <Shimmer /> : (
+  return (allProducts.length === 0) ? <SpinnerLoader /> : (
     <div className='products_maindiv_container'>
       <div className='total_products_div'>
         <h1>All Products List</h1>
