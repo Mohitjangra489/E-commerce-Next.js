@@ -8,6 +8,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import api from '../apiMiddleware';
+import encryptStorage from '../encryptstorage';
 
 
 function Login() {
@@ -32,8 +33,9 @@ function Login() {
         });
 
       if (res?.status == 200) {
-        let localstoragedata=JSON.stringify(res?.data?.data);
-        localStorage.setItem("UserData",localstoragedata);
+        let userdata=JSON.stringify(res?.data?.data);
+       
+        encryptStorage.setItem("encrypted data",userdata);
         toast.success("Logged in successfully!");
         router.push("/");
       }

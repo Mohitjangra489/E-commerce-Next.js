@@ -1,4 +1,4 @@
-.image_gif{
+.image_gif {
     height: 416px;
     box-sizing: border-box;
     object-fit: cover;
@@ -6,7 +6,7 @@
 
 }
 
-.success_main_container{
+.success_main_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,24 +15,37 @@
     width: 100%;
 
 }
-.gif_div{
+
+.gif_div {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.lower_span_div {
+    width: 100%;
     height: 100%;
-
-}
-.lower_span_div{
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-margin-top: -35px;
-text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -35px;
+    text-align: center;
 }
 
+.payment_successful_span{
+font-size: 6rem;
+}
+
+@media (max-width:700px) {
+   .image_gif{
+    width: 100%;
+   }
+   .payment_successful_span{
+    font-size: 2rem;
+   }
+
+}

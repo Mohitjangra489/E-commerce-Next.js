@@ -1,14 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../adminroutes.css';
 import { IoMdImages } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Shimmer from '@/app/components/Shimmer';
 import ReactPaginate from 'react-paginate';
 import api from '../../apiMiddleware';
 import SpinnerLoader from '@/app/components/SpinnerLoader';

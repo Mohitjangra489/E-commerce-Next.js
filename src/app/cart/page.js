@@ -9,23 +9,21 @@ import { loadStripe } from '@stripe/stripe-js';
 import api from '../apiMiddleware';
 import { toast } from 'react-toastify';
 import SpinnerLoader from '../components/SpinnerLoader';
+import encryptStorage from '../encryptstorage';
 
 const Page = () => {
 
     const [cartData, setcartData] = useState([]);
     const [subTotal, setsubTotal] = useState(0);
-    const [discount, setdiscount] = useState(0);
     const [isloading, setisloading] = useState(true);
     const router = useRouter();
 
     const subtotalPrice = () => {
-        console.log("inside totalprice")
         if (cartData.length) {
             let totalPrice = 0;
             for (let i = 0; i < cartData.length; i++) {
                 totalPrice = Number(totalPrice) + Number(cartData[i].total_price);
             }
-            console.log(totalPrice);
             setsubTotal(totalPrice);
         }
     }
@@ -48,7 +46,7 @@ const Page = () => {
         e.preventDefault();
 
         if (cartData.length && subTotal) {
-            let userData = JSON.parse(localStorage.getItem("UserData"));
+            let userData = encryptStorage.getItem("encrypted data");
             if (!userData) {
                 router.push("/login");
             }
@@ -85,7 +83,7 @@ const Page = () => {
 
     useEffect(() => {
 
-        let userData = JSON.parse(localStorage.getItem("UserData"));
+        let userData = encryptStorage.getItem("encrypted data");
         if (!userData) {
             router.push("/login");
         }

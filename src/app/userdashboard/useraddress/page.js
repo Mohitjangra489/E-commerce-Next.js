@@ -1,15 +1,17 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import "../useraddress/useraddress.css";
 import { ImLocation2 } from "react-icons/im";
 import Link from 'next/link';
 import api from '../../apiMiddleware';
 import SpinnerLoader from '@/app/components/SpinnerLoader';
+import encryptStorage from '../../encryptstorage';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
   const [allAddress, setallAddress] = useState([]);
   const [isloading, setisLoading] = useState(true);
+  const router =useRouter();
 
   async function fetchalluseraddress(id) {
     let userid = id;
@@ -23,7 +25,7 @@ const Page = () => {
 
   useEffect(() => {
 
-    let userData = JSON.parse(localStorage.getItem("UserData"));
+    let userData = encryptStorage.getItem("encrypted data");
     if (!userData) {
       router.push("/login");
     }

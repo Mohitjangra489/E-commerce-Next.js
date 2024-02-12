@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import '../updatepassword/updatepassword.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 import Link from 'next/link';
 import api from '../../apiMiddleware';
+import encryptStorage from '../../encryptstorage';
 
 const Page = () => {
 
@@ -17,7 +17,7 @@ const Page = () => {
     e.preventDefault();
     if (current && newpassword && confirmnewpassword) {
       if (newpassword == confirmnewpassword) {
-        let userData = JSON.parse(localStorage.getItem("UserData"));
+        let userData = encryptStorage.getItem("encrypted data");
         if (!userData) {
           router.push("/");
         }

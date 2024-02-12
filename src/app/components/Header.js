@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 
 import Link from 'next/link';
 import SearchContext from './Context';
+import encryptStorage from '../encryptstorage';
 
 const Header = () => {
   const [isLogged, setisLogged] = useState(false);
@@ -18,12 +19,13 @@ const Header = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    localStorage.removeItem("UserData");
+    encryptStorage.removeItem("encrypted data");
     setisLogged(false);
+    router.push('/login');
   }
 
   useEffect(() => {
-    let userdata = localStorage.getItem("UserData");
+    let userdata =encryptStorage.getItem("encrypted data");
     if (userdata) {
       setisLogged(true);
     }
@@ -51,7 +53,7 @@ const Header = () => {
           <option value="Isopure"></option>
           <option value="Serious Mass"></option>
         </datalist>
-        <button className='search_btn'><BsSearch className='react-icons' cursor="pointer" /></button>
+        <BsSearch className='searchbar-icon' />
       </div>
       <div className='header_right_container'>
         <div className='header_button_div'>

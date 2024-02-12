@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import '../styles/productcard.css';
 import StarRatings from "react-star-ratings";
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../apiMiddleware';
+import encryptStorage from '../encryptstorage';
 
 
 const ProductCard = ({ product }) => {
@@ -14,9 +14,9 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = async () => {
     
-    let userData = JSON.parse(localStorage.getItem("UserData"));
+    let userData = encryptStorage.getItem("encrypted data");
     if (!userData) {
-      router.push("/");
+      router.push("/login");
     }
     else {
       const config = {

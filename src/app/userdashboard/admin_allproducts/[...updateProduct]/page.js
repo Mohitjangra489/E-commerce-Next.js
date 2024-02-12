@@ -1,12 +1,11 @@
 'use client';
 import React, { useEffect, useLayoutEffect, useState, useMemo } from 'react'
-import axios from 'axios';
 import '../../../userdashboard/adminroutes.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import api from '../../../apiMiddleware';
+import encryptStorage from '../../../encryptstorage';
 
 const UpdateProduct = ({ params }) => {
   const router=useRouter();
@@ -116,7 +115,7 @@ const UpdateProduct = ({ params }) => {
 
   useEffect(() => {
     async function getProductData() {
-       const userData=JSON.parse(localStorage.getItem("UserData"));
+       const userData=encryptStorage.getItem("encrypted data");
 
        const headers={
         "Authorization":`bearer ${userData.token}`
@@ -137,7 +136,7 @@ const UpdateProduct = ({ params }) => {
         .catch((error) => { 
           if(error?.response?.data?.message=="Invalid Token")
           {
-            localStorage.removeItem("UserData");
+            encryptStorage.removeItem("encrypted data");
             toast.error(error.message);
             router.push("/");
           }

@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import api from '../apiMiddleware';
+import encryptStorage from '../encryptstorage';
+import SpinnerLoader from '../components/SpinnerLoader';
 
 
 const Page = ({ params }) => {
@@ -19,9 +21,9 @@ const Page = ({ params }) => {
 
 
     const handleAddToCart = async () => {
-        let userData = JSON.parse(localStorage.getItem("UserData"));
+        let userData = encryptStorage.getItem("encrypted data");
         if (!userData) {
-            router.push("/");
+            router.push("/login");
         }
         else {
             const config = {
@@ -65,7 +67,7 @@ const Page = ({ params }) => {
             )
                 .catch((error) => {
                     if (error?.response?.data?.message == "Invalid Token") {
-                        localStorage.removeItem("UserData");
+                        encryptStorage.removeItem("UserData");
                         toast.error(error.message);
                         router.push("/");
                     }
@@ -76,7 +78,7 @@ const Page = ({ params }) => {
                 });
         }
 
-        const userData = JSON.parse(localStorage.getItem("UserData"));
+        const userData = encryptStorage.getItem("encrypted data");
         if (!userData) {
             router.push("/login");
         }
@@ -88,9 +90,10 @@ const Page = ({ params }) => {
     }, []);
 
     return (
-        <div className='productdetails_container'>
+        <>
             {
                 isloaded ? (
+                    <div className='productdetails_container'>
                     <div className='upper_div'>
                         <div className='product_image_container'>
                             <img src={productData?.images?.url} className='product_image'></img>
@@ -123,7 +126,7 @@ const Page = ({ params }) => {
                             </div>
                             <div className='addtocart_div'>
                                 {productData.stock !== "0" ? <button className='cart_btn' onClick={handleAddToCart}>ADD TO CART</button> : <button className='cart_btn' >OUT OF STOCK</button>}
-                            </div>
+                            </div>                          
 
                             <div>
                                 <div className='check_pincode_div'>
@@ -138,11 +141,13 @@ const Page = ({ params }) => {
                             </div>
                         </div>
                     </div>
-                ) : <h1>Loading...</h1>
+                    </div>
+                ) :<SpinnerLoader/>
             }
 
             <ToastContainer />
-        </div>
+        
+        </>
     )
 }
 

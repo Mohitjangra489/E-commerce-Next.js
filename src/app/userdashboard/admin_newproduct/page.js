@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import '../adminroutes.css';
-import axios from 'axios';
 import api from '../../apiMiddleware';
+
 const Page = () => {
   const [file, setfile] = useState(null);
   const [product, setProduct] = useState({category:"Advanced Fitness"});

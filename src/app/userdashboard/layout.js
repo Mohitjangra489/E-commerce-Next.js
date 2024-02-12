@@ -4,6 +4,7 @@ import '../userdashboard/userdashboard.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import encryptStorage from '../encryptstorage';
 
 export default function Layout({ children }) {
   const [isAdmin, setisAdmin] = useState(false);
@@ -11,7 +12,7 @@ export default function Layout({ children }) {
   const router=useRouter();
 
   useEffect(() => {
-    let userData = JSON.parse(localStorage.getItem("UserData"));
+    let userData = encryptStorage.getItem("encrypted data");
     
     if (userData) {
       if (userData?.role == "Admin") {
@@ -33,9 +34,9 @@ export default function Layout({ children }) {
 
   useEffect(()=>{
    const checkToken=setInterval(() => {
-    const data=localStorage.getItem("UserData");
+    const data=encryptStorage.getItem("encrypted data");
     if(!data){
-      localStorage.removeItem("UserData");
+      encryptStorage.removeItem("UserData");
       router.push("/");
       
     }

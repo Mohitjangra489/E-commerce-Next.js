@@ -60,6 +60,14 @@
     text-decoration: none;
 }
 
+.searchbar-icon {
+    width: 2.5em;
+    height: 2.5em;
+    color: black;
+    margin-left: -4rem;
+    margin-top: 7px;
+}
+
 .search_div {
     display: flex;
 }
@@ -84,6 +92,12 @@
     .search_div {
         order: 3;
     }
+    .searchbar-icon{
+        width: 1.5em;
+        height: 1.5em;
+        margin-left: -2rem;
+
+    }
 
     .user_profile_image {
         height: 23px;
@@ -107,6 +121,7 @@
 
     .search {
         padding: 5px;
+        width: 20rem;
     }
 
     .hamburger {

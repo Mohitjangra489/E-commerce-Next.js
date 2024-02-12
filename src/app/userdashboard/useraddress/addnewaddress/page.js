@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 import '../addnewaddress/addnewaddress.css';
 import Link from 'next/link';
 import api from '../../../apiMiddleware';
+import encryptStorage from '../../../encryptstorage';
 
 const Page = () => {
     const [address, setaddress] = useState({});
@@ -16,7 +16,7 @@ const Page = () => {
 
     const handleformsubmit = async (e) => {
         e.preventDefault();
-        let userData = JSON.parse(localStorage.getItem("UserData"));
+        let userData = encryptStorage.getItem("encrypted data");
         if(!userData){
           router.push("/");
         }

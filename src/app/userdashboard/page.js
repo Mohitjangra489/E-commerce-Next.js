@@ -9,7 +9,7 @@ import { GiHouseKeys } from "react-icons/gi";
 import { BsDatabaseFill,BsDatabaseFillAdd } from "react-icons/bs";
 import { PiUserListFill } from "react-icons/pi";
 import { PiCodesandboxLogoFill } from "react-icons/pi";
-
+import encryptStorage from '../encryptstorage'
 
 
 
@@ -20,8 +20,7 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    let userData = JSON.parse(localStorage.getItem("UserData"));
-
+    let userData=encryptStorage.getItem("encrypted data");
     if (!userData) {
       localStorage.removeItem("UserData");
       router.push("/");
