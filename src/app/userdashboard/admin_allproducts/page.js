@@ -104,11 +104,11 @@ const Page = () => {
       <ToastContainer />
       <ReactPaginate
         breakLabel="..."
-        nextLabel="Next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< Prev"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         previousLinkClassName='prev_link'
         nextLinkClassName='next_link'

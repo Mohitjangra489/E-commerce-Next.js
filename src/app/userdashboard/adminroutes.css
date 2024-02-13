@@ -167,6 +167,7 @@ table {
   @media (max-width:700px) {
     .products_container{
         overflow: scroll;
+        align-items: flex-start;
     }
      .delete_image{
         width: 2em;

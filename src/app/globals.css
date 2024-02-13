@@ -70,6 +70,7 @@ html,body{
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
+    color: white;
 
 }
 .disabled_btn{
