@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useLayoutEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react';
 import '../../../userdashboard/adminroutes.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -115,8 +115,8 @@ const UpdateProduct = ({ params }) => {
 
   useEffect(() => {
     async function getProductData() {
-       const userData=encryptStorage.getItem("encrypted data");
-
+       const securedata = encryptStorage.getItem("encrypted data");
+       const userData=JSON.parse(securedata);
        const headers={
         "Authorization":`bearer ${userData.token}`
        }
