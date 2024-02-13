@@ -4,6 +4,7 @@ import axios, { all } from 'axios';
 
 import { CiSquarePlus, CiSquareMinus, CiSquareRemove } from "react-icons/ci";
 import api from '../apiMiddleware';
+import encryptStorage from '../encryptstorage';
 
 const CartItem = ({ item, cartData, setcartData }) => {
 
