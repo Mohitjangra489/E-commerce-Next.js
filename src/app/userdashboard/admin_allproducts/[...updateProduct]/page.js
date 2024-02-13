@@ -156,9 +156,9 @@ const UpdateProduct = ({ params }) => {
     return (
 
       <div className='updateimage_container'>
-        <form className='form_data' style={{ padding: "10em", width: "60%" }} enctype="multipart/form-data" >
+        <form className='form_data_image'  enctype="multipart/form-data" >
           <h1 style={{ textDecoration: "underline" }}>Update Image:-</h1>
-          <label>Upload product: </label>
+          <label>Upload product Image: </label>
           <input type="file" name="photo" onChange={(e) => setfile(e.target.files[0])} required />
           <button type="submit" className='form_submit_btn' onClick={handleUpdateImage}>
             Update Product image
