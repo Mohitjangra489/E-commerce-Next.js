@@ -16,7 +16,8 @@ const Page = () => {
 
     const handleformsubmit = async (e) => {
         e.preventDefault();
-        let userData = encryptStorage.getItem("encrypted data");
+        const securedata = encryptStorage.getItem("encrypted data");
+            const userData=JSON.parse(securedata);
         if(!userData){
           router.push("/");
         }

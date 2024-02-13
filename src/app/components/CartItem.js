@@ -8,7 +8,8 @@ import api from '../apiMiddleware';
 const CartItem = ({ item, cartData, setcartData }) => {
 
   const handleDeleteCartitem = async () => {
-    let userData = JSON.parse(localStorage.getItem("UserData"));
+    const securedata = encryptStorage.getItem("encrypted data");
+            const userData=JSON.parse(securedata);
     if (!userData) {
       router.push("/login");
     }
@@ -29,7 +30,8 @@ const CartItem = ({ item, cartData, setcartData }) => {
   }
 
   const handleincreasequantity = async () => {
-    let userData = JSON.parse(localStorage.getItem("UserData"));
+    const securedata = encryptStorage.getItem("encrypted data");
+            const userData=JSON.parse(securedata);
     if (!userData) {
       router.push("/login");
     }
@@ -58,7 +60,8 @@ const CartItem = ({ item, cartData, setcartData }) => {
 
   const handledecreasequantity = async () => {
     if (item.quantity > 1) {
-      let userData = JSON.parse(localStorage.getItem("UserData"));
+      const securedata = encryptStorage.getItem("encrypted data");
+      const userData=JSON.parse(securedata);
       if (!userData) {
         router.push("/login");
       }

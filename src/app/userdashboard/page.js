@@ -20,9 +20,10 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    let userData=encryptStorage.getItem("encrypted data");
+    const securedata = encryptStorage.getItem("encrypted data");
+    const userData=JSON.parse(securedata);
     if (!userData) {
-      localStorage.removeItem("UserData");
+      encryptStorage.removeItem("encrypted data");
       router.push("/");
     }
     else {

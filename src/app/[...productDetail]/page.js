@@ -21,7 +21,8 @@ const Page = ({ params }) => {
 
 
     const handleAddToCart = async () => {
-        let userData = encryptStorage.getItem("encrypted data");
+        const securedata = encryptStorage.getItem("encrypted data");
+        const userData=JSON.parse(securedata);
         if (!userData) {
             router.push("/login");
         }
@@ -56,6 +57,8 @@ const Page = ({ params }) => {
 
     useEffect(() => {
         async function getProductData() {
+       
+            
             const headers = {
                 "Authorization": `bearer ${userData.token}`
             }
@@ -67,9 +70,9 @@ const Page = ({ params }) => {
             )
                 .catch((error) => {
                     if (error?.response?.data?.message == "Invalid Token") {
-                        encryptStorage.removeItem("UserData");
+                        encryptStorage.removeItem("encrypted data");
                         toast.error(error.message);
-                        router.push("/");
+                        router.push("/login");
                     }
                     else {
                         toast.error(error.message);
@@ -78,7 +81,9 @@ const Page = ({ params }) => {
                 });
         }
 
-        const userData = encryptStorage.getItem("encrypted data");
+        const securedata = encryptStorage.getItem("encrypted data");
+        const userData=JSON.parse(securedata);
+
         if (!userData) {
             router.push("/login");
         }

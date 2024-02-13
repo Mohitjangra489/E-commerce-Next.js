@@ -46,7 +46,9 @@ const Page = () => {
         e.preventDefault();
 
         if (cartData.length && subTotal) {
-            let userData = encryptStorage.getItem("encrypted data");
+            const securedata = encryptStorage.getItem("encrypted data");
+            const userData=JSON.parse(securedata);
+
             if (!userData) {
                 router.push("/login");
             }
@@ -83,7 +85,9 @@ const Page = () => {
 
     useEffect(() => {
 
-        let userData = encryptStorage.getItem("encrypted data");
+        const securedata = encryptStorage.getItem("encrypted data");
+        const userData=JSON.parse(securedata);
+
         if (!userData) {
             router.push("/login");
         }

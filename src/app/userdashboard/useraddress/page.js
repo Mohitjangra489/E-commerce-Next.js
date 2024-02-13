@@ -25,7 +25,8 @@ const Page = () => {
 
   useEffect(() => {
 
-    let userData = encryptStorage.getItem("encrypted data");
+    const securedata = encryptStorage.getItem("encrypted data");
+            const userData=JSON.parse(securedata);
     if (!userData) {
       router.push("/login");
     }
@@ -43,7 +44,6 @@ const Page = () => {
       {
         isloading ? <SpinnerLoader /> : (
           <>
-          {console.log(allAddress)}
             { 
               allAddress==[] || allAddress==undefined ? <span>You have not added any address!</span> : (allAddress?.map((address) => {
                 return (

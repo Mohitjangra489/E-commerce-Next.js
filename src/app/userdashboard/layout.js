@@ -12,10 +12,11 @@ export default function Layout({ children }) {
   const router=useRouter();
 
   useEffect(() => {
-    let userData = encryptStorage.getItem("encrypted data");
-    
+    const securedata = encryptStorage.getItem("encrypted data");
+    const userData=JSON.parse(securedata);
     if (userData) {
       if (userData?.role == "Admin") {
+      
         setisAdmin(true);
       }
     }
@@ -34,9 +35,10 @@ export default function Layout({ children }) {
 
   useEffect(()=>{
    const checkToken=setInterval(() => {
-    const data=encryptStorage.getItem("encrypted data");
+    const securedata = encryptStorage.getItem("encrypted data");
+    const data=JSON.parse(securedata);
     if(!data){
-      encryptStorage.removeItem("UserData");
+      encryptStorage.removeItem("encrypted data");
       router.push("/");
       
     }

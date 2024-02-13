@@ -25,7 +25,8 @@ const Header = () => {
   }
 
   useEffect(() => {
-    let userdata =encryptStorage.getItem("encrypted data");
+    const securedata = encryptStorage.getItem("encrypted data");
+            const userdata=JSON.parse(securedata);
     if (userdata) {
       setisLogged(true);
     }
@@ -33,6 +34,7 @@ const Header = () => {
       setisLogged(false);
     }
   });
+  
   return (
     <div className='header_container'>
 
