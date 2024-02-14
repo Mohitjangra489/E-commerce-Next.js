@@ -100,8 +100,8 @@ app.post('/checkoutsession', async (req, res) => {
             payment_method_types: ["card"],
             line_items: lineitems,
             mode: "payment",
-            success_url: "http://localhost:3000/success",
-            cancel_url: "http://localhost:3000",
+            success_url: "https://optimum-nutrition.vercel.app//success",
+            cancel_url: "https://optimum-nutrition.vercel.app",
         });
         console.log("session=====", session);
         res.json({ id: session.id });
