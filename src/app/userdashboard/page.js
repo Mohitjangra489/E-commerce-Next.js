@@ -67,12 +67,12 @@ const Page = () => {
           </div>
         </Link>
 
-        <Link href="/userdashboard/updateprofile" className='user_links'>
+        {/* <Link href="/userdashboard/updateprofile" className='user_links'>
           <div className='profile_lower_div_divs'>
             <FaUserEdit className='all_icons' />
             Edit Profile
           </div>
-        </Link>
+        </Link> */}
 
         <Link href="/userdashboard/updatepassword" className='user_links'>
           <div className='profile_lower_div_divs'>
@@ -96,19 +96,19 @@ const Page = () => {
           </div>
         </Link>
 
-        <Link href="/userdashboard/admin_allorders" className='user_links'>
+        {/* <Link href="/userdashboard/admin_allorders" className='user_links'>
           <div className='profile_lower_div_divs'>
             <PiCodesandboxLogoFill className='all_icons' />
             All Orders<span className='admin_span'>(Admin)</span>
           </div>
-        </Link>
+        </Link> */}
 
-        <Link href="/userdashboard/admin_allusers" className='user_links'>
+        {/* <Link href="/userdashboard/admin_allusers" className='user_links'>
           <div className='profile_lower_div_divs'>
             <PiUserListFill className='all_icons' />
             All Users<span className='admin_span'>(Admin)</span>
           </div>
-        </Link>
+        </Link> */}
     </>
 
   )

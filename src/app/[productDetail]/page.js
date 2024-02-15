@@ -17,12 +17,14 @@ const Page = ({ params }) => {
     const [productRating, setproductRating] = useState(1);
     const router = useRouter();
 
-    const product_id = params.productDetail[0];
+    const product_id = params.productDetail;
+
+    console.log("params=", params)
 
 
     const handleAddToCart = async () => {
         const securedata = encryptStorage.getItem("encrypted data");
-        const userData=JSON.parse(securedata);
+        const userData = JSON.parse(securedata);
         if (!userData) {
             router.push("/login");
         }
@@ -57,8 +59,8 @@ const Page = ({ params }) => {
 
     useEffect(() => {
         async function getProductData() {
-       
-            
+
+
             const headers = {
                 "Authorization": `bearer ${userData.token}`
             }
@@ -75,14 +77,14 @@ const Page = ({ params }) => {
                         router.push("/login");
                     }
                     else {
-                        toast.error(error.message);
+                               router.push("/notFound");
                     }
 
                 });
         }
 
         const securedata = encryptStorage.getItem("encrypted data");
-        const userData=JSON.parse(securedata);
+        const userData = JSON.parse(securedata);
 
         if (!userData) {
             router.push("/login");
@@ -90,7 +92,7 @@ const Page = ({ params }) => {
         else {
             getProductData();
         }
-       
+
 
     }, []);
 
@@ -99,59 +101,59 @@ const Page = ({ params }) => {
             {
                 isloaded ? (
                     <div className='productdetails_container'>
-                    <div className='upper_div'>
-                        <div className='product_image_container'>
-                            <img src={productData?.images?.url} className='product_image'></img>
-                        </div>
-                        <div className='details_div'>
-                            <div>
-                                <div className='product_namee_div'>
-                                    <span>{productData?.name}</span>
-                                </div>
-                                <div>
-                                    <p style={{ wordSpacing: "3px" ,textAlign: "justify"}}>{productData?.description}</p>
-                                </div>
-                                <div className='rating_div'>
-                                    <StarRatings
-                                        rating={productRating}
-                                        starRatedColor="#ffb829"
-                                        numberOfStars={5}
-                                        starDimension="20px"
-                                        starSpacing="2px"
-                                        name="rating"
-                                    />
-                                </div>
-                                <div className='other_details'>
-                                    <span>Price: ₹{productData?.price}</span><br></br>
-                                    <span>Flavour: {productData?.flavour}</span><br></br>
-                                    <span>Size: {productData?.size}</span><br></br>
-                                    <span style={{fontSize: "1rem",fontWeight: "600"}}>Sold By {productData?.seller}</span><br></br>
-                                </div>
-
+                        <div className='upper_div'>
+                            <div className='product_image_container'>
+                                <img src={productData?.images?.url} className='product_image'></img>
                             </div>
-                            <div className='addtocart_div'>
-                                {productData.stock !== "0" ? <button className='cart_btn' onClick={handleAddToCart}>ADD TO CART</button> : <button className='cart_btn' >OUT OF STOCK</button>}
-                            </div>                          
-
-                            <div>
-                                <div className='check_pincode_div'>
-                                    <label>CHECK PIN CODE SERVICEABILITY</label>
-                                    <div className='checkpin_input'>
-                                        <input type='text' className='input_pin' placeholder='330223'></input>
-                                        <button  className='check_checkbtn'>CHECK</button>
+                            <div className='details_div'>
+                                <div>
+                                    <div className='product_namee_div'>
+                                        <span>{productData?.name}</span>
+                                    </div>
+                                    <div>
+                                        <p style={{ wordSpacing: "3px", textAlign: "justify" }}>{productData?.description}</p>
+                                    </div>
+                                    <div className='rating_div'>
+                                        <StarRatings
+                                            rating={productRating}
+                                            starRatedColor="#ffb829"
+                                            numberOfStars={5}
+                                            starDimension="20px"
+                                            starSpacing="2px"
+                                            name="rating"
+                                        />
+                                    </div>
+                                    <div className='other_details'>
+                                        <span>Price: ₹{productData?.price}</span><br></br>
+                                        <span>Flavour: {productData?.flavour}</span><br></br>
+                                        <span>Size: {productData?.size}</span><br></br>
+                                        <span style={{ fontSize: "1rem", fontWeight: "600" }}>Sold By {productData?.seller}</span><br></br>
                                     </div>
 
                                 </div>
+                                <div className='addtocart_div'>
+                                    {productData.stock !== "0" ? <button className='cart_btn' onClick={handleAddToCart}>ADD TO CART</button> : <button className='cart_btn' >OUT OF STOCK</button>}
+                                </div>
 
+                                <div>
+                                    <div className='check_pincode_div'>
+                                        <label>CHECK PIN CODE SERVICEABILITY</label>
+                                        <div className='checkpin_input'>
+                                            <input type='text' className='input_pin' placeholder='330223'></input>
+                                            <button className='check_checkbtn'>CHECK</button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                ) :<SpinnerLoader/>
+                ) : <SpinnerLoader />
             }
 
             <ToastContainer />
-        
+
         </>
     )
 }

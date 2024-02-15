@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import './styles/notfound.css';
+import '../styles/notfound.css';
 
 const Notfound = () => {
     const router=useRouter();

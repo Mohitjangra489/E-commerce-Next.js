@@ -19,9 +19,13 @@ const Header = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    encryptStorage.removeItem("encrypted data");
-    setisLogged(false);
-    router.push('/login');
+    let confirmCheck=confirm('Do you want to logout ?');
+    if(confirmCheck){
+      encryptStorage.removeItem("encrypted data");
+      setisLogged(false);
+      router.push('/login');
+    }
+    
   }
 
   useEffect(() => {

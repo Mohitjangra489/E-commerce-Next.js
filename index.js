@@ -100,7 +100,7 @@ app.post('/checkoutsession', async (req, res) => {
             payment_method_types: ["card"],
             line_items: lineitems,
             mode: "payment",
-            success_url: "https://optimum-nutrition.vercel.app//success",
+            success_url: "https://optimum-nutrition.vercel.app/success",
             cancel_url: "https://optimum-nutrition.vercel.app",
         });
         console.log("session=====", session);
@@ -238,6 +238,10 @@ app.get('/getproductdetails', verifyToken, async (req, res) => {
                 if (data) {
                     console.log("data", data);
                     res.json(data);
+                }
+                else
+                {
+                    res.status(404).send({message:"Not Found"});
                 }
 
             }

@@ -1,6 +1,6 @@
 "use client";
 import './login.css';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBCheckbox, MDBIcon } from 'mdb-react-ui-kit';
@@ -15,7 +15,7 @@ function Login() {
 
   const usernameRef = useRef("");
   const passwordRef = useRef("");
-  const router=useRouter();
+  const router = useRouter();
 
   const handleSubmit = async () => {
     if (usernameRef.current !== "" && passwordRef.current !== "") {
@@ -23,19 +23,19 @@ function Login() {
         username: usernameRef.current,
         password: passwordRef.current,
       }
-      const config={
+      const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       }
-      const res = await api.post("/logincheck",userDetails,config).catch((err) => {
-        toast.error( err?.response?.data?.message);
-        });
+      const res = await api.post("/logincheck", userDetails, config).catch((err) => {
+        toast.error(err?.response?.data?.message);
+      });
 
       if (res?.status == 200) {
-        let userdata=JSON.stringify(res?.data?.data);
-       
-        encryptStorage.setItem("encrypted data",userdata);
+        let userdata = JSON.stringify(res?.data?.data);
+
+        encryptStorage.setItem("encrypted data", userdata);
         toast.success("Logged in successfully!");
         router.push("/");
       }
@@ -44,6 +44,18 @@ function Login() {
       toast.info("Enter all details!");
     }
   }
+
+  useEffect(() => {
+    const securedata = encryptStorage.getItem("encrypted data");
+    const userData = JSON.parse(securedata);
+    if (userData) {
+      toast.info("You are already loggedIn");
+      setTimeout(()=>{
+        router.push("/");
+      },2000)
+    
+    }
+  }, []);
 
   return (
     <MDBContainer fluid className='p-4'>
@@ -101,7 +113,7 @@ function Login() {
           </MDBCard>
         </MDBCol>
       </MDBRow>
-<ToastContainer/>
+      <ToastContainer />
     </MDBContainer>
   );
 }
