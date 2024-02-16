@@ -14,8 +14,9 @@ const Page = () => {
  const session_id = searchParams.get('session_ID');
  console.log(session_id);
 
-     const clearcart=async(id)=>{
-        let req = await api.post(`/clearcart?id=${id}`).catch((error => console.log(error)));
+ 
+     const handlesuccess=async(id)=>{
+        let req = await api.post(`/paymentsuccess?session_id=${session_id}&user_id=${id}`).catch((error => console.log(error)));
      }
 
     useEffect(()=>{
@@ -26,7 +27,7 @@ const Page = () => {
         }
         else {
            let id=userData.user_id;
-            clearcart(id);
+           handlesuccess(id);
         }
     
     },[])
