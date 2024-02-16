@@ -17,12 +17,66 @@
 
 }
 .cartpage_main_div{
-    display: flex;
+    /* display: flex; */
     gap:20px;
 }
-.left_div{
+.lower_shipping_div{
+    margin-top: 5rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+.shipping_info_container{
     width: 70%;
-    height: auto;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #b1afaf;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.addnew_button{
+    outline: none;
+    border: none;
+    background: black;
+    color: white;
+    padding: 9px;
+}
+.user_address_div{
+    height: 15rem;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+    background-color: #fbfbfb;
+    overflow: scroll;
+    scrollbar-width: none;
+    text-wrap: nowrap;
+    margin-bottom: 2rem;
+}
+.user_address_div:hover{
+    box-shadow: 0px 0px 5px 0px grey;
+    transition: 0.3s ease-in-out;
+}
+.shipping_addresses_div{
+    max-height: 30rem;
+    width: 100%;
+    padding: 10px;
+    overflow: scroll;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+    
+}
+.left_div{
+    width: 100%;
+    max-height: 500px;
+    overflow: scroll;
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -179,5 +233,11 @@ box-sizing: border-box;
     }
     .no_cart_div{
         margin-left: 0px;
+    }
+    .shipping_info_container{
+        width: 100%;
+    }
+    .lower_shipping_div{
+        flex-direction: column;
     }
 }
