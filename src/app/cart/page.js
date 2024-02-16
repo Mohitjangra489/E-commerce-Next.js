@@ -170,7 +170,7 @@ const Page = () => {
                                         {
                                             allAddress?.length ?
                                                 allAddress.map((address) => {
-                                                    return (<div className='user_address_div'>
+                                                    return (<div className='user_address_div' key={address?.address_id}>
                                                         <input type='radio' className='radio_input' 
                                                         value={address?.address_id} id={address?.address_id} 
                                                         checked={selectedAddress == address?.address_id}
