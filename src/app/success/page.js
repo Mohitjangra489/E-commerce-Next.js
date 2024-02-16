@@ -6,9 +6,14 @@ import '../success/success.css'
 import api from '../apiMiddleware';
 import encryptStorage from '../encryptstorage';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 const Page = () => {
  const router=useRouter();
+ const searchParams = useSearchParams()
+ const session_id = searchParams.get('session_ID');
+ console.log(session_id);
+
      const clearcart=async(id)=>{
         let req = await api.post(`/clearcart?id=${id}`).catch((error => console.log(error)));
      }

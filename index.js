@@ -112,6 +112,7 @@ app.post('/checkoutsession', async (req, res) => {
 
 });
 
+
 app.get('/stripetransactionslist', async (req, res) => {
 
     const transactions = await stripe.issuing.transactions.list();
