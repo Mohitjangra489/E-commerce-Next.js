@@ -7,7 +7,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
 import api from '../apiMiddleware';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SpinnerLoader from '../components/SpinnerLoader';
 import encryptStorage from '../encryptstorage';
 
@@ -18,10 +19,10 @@ const Page = () => {
     const [isloading, setisloading] = useState(true);
     const [selectedAddress, setSelectedAddress] = useState('');
 
-  const handleAddressChange = (event) => {
-  
-    setSelectedAddress(event.target.value);
-  };
+    const handleAddressChange = (event) => {
+
+        setSelectedAddress(event.target.value);
+    };
     const router = useRouter();
 
     console.log("user address", allAddress);
@@ -62,11 +63,11 @@ const Page = () => {
     async function handleCheckout(e) {
         e.preventDefault();
 
-       
-          
-        if (cartData.length && subTotal && selectedAddress!='') {
 
-            const shippingAddress=allAddress.find((address)=>address.address_id==selectedAddress);
+
+        if (cartData.length && subTotal && selectedAddress != '') {
+
+            const shippingAddress = allAddress.find((address) => address.address_id == selectedAddress);
             console.log(shippingAddress);
             const securedata = encryptStorage.getItem("encrypted data");
             const userData = JSON.parse(securedata);
@@ -80,7 +81,7 @@ const Page = () => {
                 const stripe = await loadStripe("pk_test_51Of4JlSHzjhUWugHQqGJDCuj06HRD0AHYBffFFMEG60BKV0BCnaj3tYsbeJfACUjkwD9PmAgKPTfXbXaXH7vLAUA00JGpvaCKW");
 
                 const body = {
-                    userId:userid,
+                    userId: userid,
                     products: cartData,
                     shippingInfo: shippingAddress
                 }
@@ -102,8 +103,7 @@ const Page = () => {
                 }
 
             }
-        }else
-        {
+        } else {
             toast.info("Please select shipping information or address");
         }
 
@@ -163,7 +163,9 @@ const Page = () => {
                                 }
 
                             </div>
-                            <div className='lower_shipping_div'>
+                            {
+                             cartData.length != 0 ? (
+                             <div className='lower_shipping_div'>
                                 <div className='shipping_info_container'>
                                     <h1>Shipping Information</h1>
                                     <div className='shipping_addresses_div'>
@@ -171,10 +173,10 @@ const Page = () => {
                                             allAddress?.length ?
                                                 allAddress.map((address) => {
                                                     return (<div className='user_address_div' key={address?.address_id}>
-                                                        <input type='radio' className='radio_input' 
-                                                        value={address?.address_id} id={address?.address_id} 
-                                                        checked={selectedAddress == address?.address_id}
-                                                        onChange={handleAddressChange}
+                                                        <input type='radio' className='radio_input'
+                                                            value={address?.address_id} id={address?.address_id}
+                                                            checked={selectedAddress == address?.address_id}
+                                                            onChange={handleAddressChange}
                                                         />
                                                         <label htmlFor={address.address_id} >
                                                             <div>
@@ -191,12 +193,11 @@ const Page = () => {
                                         }
                                     </div>
                                     <Link href={"/userdashboard/useraddress/addnewaddress"}>
-                                    <button className='addnew_button'>+Add new address</button>
+                                        <button className='addnew_button'>+Add new address</button>
                                     </Link>
 
                                 </div>
-                                {
-                                    cartData.length != 0 ? (
+                               
                                         <div className="right_div">
                                             <div className="order_summary">
                                                 <span>Order Summary</span>
@@ -237,13 +238,12 @@ const Page = () => {
                                             </div>
 
                                         </div>
-                                    ) : ""
-                                }
 
                             </div>
-
-
-
+                             ) : ""
+                             }
+                             
+                            <ToastContainer />
                         </div>
 
                     </>
