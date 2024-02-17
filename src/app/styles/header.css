@@ -91,7 +91,12 @@
 @media (max-width:700px) {
     .search_div {
         order: 3;
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 22px;
+    
     }
+   
     .searchbar-icon{
         width: 1.5em;
         height: 1.5em;
@@ -109,10 +114,7 @@
         flex-wrap: wrap;
     }
 
-    .search_div {
-        width: 20rem;
-        margin-left: 20px;
-    }
+   
 
     .react-icons {
         width: 2.0em;
@@ -121,7 +123,7 @@
 
     .search {
         padding: 5px;
-        width: 20rem;
+        width: 100%
     }
 
     .hamburger {

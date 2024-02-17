@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchallproducts() {
-      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) });
+      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) }).catch((error)=>console.log(error));
     };
     fetchallproducts();
     setisLoading(false);

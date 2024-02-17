@@ -1,0 +1,75 @@
+.orderdiv_container{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #b1afaf;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.orderpage_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.upper1_div{
+    border-bottom: 1px solid #b1afaf;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.upper2_div{
+    padding: 10px 8px 10px 0px;
+    border-bottom: 1px solid #b1afaf;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 25rem;
+    overflow: scroll;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+
+}
+.orderid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.orderdate{
+    display: flex;
+    gap: 7rem;
+}
+
+.upper2div_div{
+    display: flex;
+    justify-content: space-between;
+}
+.orderdetail_div{
+    display: flex;
+    flex-direction: column;
+}
+.subtotal_div{
+    display: flex;
+    justify-content: flex-end;
+}
+.paid_span{
+    background-color: #e7991f;
+    color: white;
+    padding: 5px 0px 5px 10px;
+    border-radius: 36px;
+    letter-spacing: 3px;
+    text-wrap: nowrap;
+
+}
+.orderid_span{
+    font-size: 3rem;
+}
+
+@media (max-width:700px) {
+    .orderid_span{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+
