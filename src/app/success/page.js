@@ -14,8 +14,12 @@ const Page = () => {
  const session_id = searchParams.get('session_ID');
  console.log(session_id);
 
+
  
      const handlesuccess=async(id)=>{
+        if(!session_id){
+            router.push("/");
+         }
         let req = await api.post(`/paymentsuccess?session_id=${session_id}&user_id=${id}`).catch((error => console.log(error)));
      }
 
@@ -27,6 +31,7 @@ const Page = () => {
         }
         else {
            let id=userData.user_id;
+           
            handlesuccess(id);
         }
     
