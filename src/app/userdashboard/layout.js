@@ -63,7 +63,7 @@ export default function Layout({ children }) {
                   <ul>
                     <Link href="/userdashboard/admin_newproduct"><li>New Product <span className='admin_span'>(Admin)</span></li></Link>
                     <Link href="/userdashboard/admin_allproducts"> <li>All Products <span className='admin_span'>(Admin)</span></li></Link>
-                    {/* <Link href="/userdashboard/admin_allorders"> <li>All Orders <span className='admin_span'>(Admin)</span></li></Link> */}
+                    <Link href="/userdashboard/admin_allorders"> <li>All Orders <span className='admin_span'>(Admin)</span></li></Link>
                     {/* <Link href="/userdashboard/admin_allusers"> <li>All Users <span className='admin_span'>(Admin)</span></li></Link> */}
                   </ul>
                   <hr></hr>

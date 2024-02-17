@@ -189,7 +189,7 @@ const Page = () => {
                                                         </label>
                                                     </div>)
                                                 })
-                                                : "You have not added any address yet.Please add a new address!"
+                                                : <span style={{fontSize:"2rem",color:"grey"}}>You have not added any address yet.Please add a new address!</span>
                                         }
                                     </div>
                                     <Link href={"/userdashboard/useraddress/addnewaddress"}>

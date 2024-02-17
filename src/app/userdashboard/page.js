@@ -96,12 +96,12 @@ const Page = () => {
           </div>
         </Link>
 
-        {/* <Link href="/userdashboard/admin_allorders" className='user_links'>
+        <Link href="/userdashboard/admin_allorders" className='user_links'>
           <div className='profile_lower_div_divs'>
             <PiCodesandboxLogoFill className='all_icons' />
             All Orders<span className='admin_span'>(Admin)</span>
           </div>
-        </Link> */}
+        </Link>
 
         {/* <Link href="/userdashboard/admin_allusers" className='user_links'>
           <div className='profile_lower_div_divs'>

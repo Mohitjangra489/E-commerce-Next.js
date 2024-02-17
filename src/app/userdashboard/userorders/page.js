@@ -42,11 +42,13 @@ const Page = () => {
     <div className='orderpage_container'>
       <span style={{ fontSize: "6rem" }}>Your Orders</span>
       <Link href="/" style={{ color: "grey" }}>Continue shopping...</Link>
+     
 
       {
         isloading ? <SpinnerLoader /> : (
           <>
-            {allorders?.map((order) => {
+            { 
+            allorders.length==0 ? <span style={{fontSize:"2.5rem",color:"grey",letterSpacing:'2px'}}> You have not ordered anything yet!🦉</span> : (allorders?.map((order) => {
               return (
                 <div className='orderdiv_container' key={order._id}>
                   <div className='upper1_div'>
@@ -89,7 +91,7 @@ const Page = () => {
                   </div>
                 </div>
               )
-            })
+            }))
             }
           </>
 

@@ -192,7 +192,7 @@ const Page = () => {
 
         </div>
         <label>Upload product image: </label>
-        <input type="file" name="photo" onChange={(e) => setfile(e.target.files[0])} required />
+        <input type="file" name="photo"  style={{margin:"20px"}} onChange={(e) => setfile(e.target.files[0])} required />
 
         <button type="submit" className='form_submit_btn' onClick={handleformsubmit}>
           Create Product

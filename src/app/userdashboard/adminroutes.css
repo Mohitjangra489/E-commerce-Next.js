@@ -26,17 +26,20 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 10px;
 }
 .product_desc_div{
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 10px;
 }
 .product_other_div{
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
     gap: 20px;
 }
 
@@ -113,7 +116,7 @@ label{
     padding: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border: 1px solid lightgrey;
     border-radius: 5px;
     flex-direction: column;
@@ -128,6 +131,9 @@ table {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+  }
+  tr{
+    line-height: 3;
   }
   .action_div{
     width: 100%;
@@ -180,5 +186,8 @@ table {
      .form1_data{
         width: 100%;
      }
+     tr{
+        line-height: 2;
+      }
 
   }

@@ -45,7 +45,7 @@ const Page = () => {
         isloading ? <SpinnerLoader /> : (
           <>
             { 
-              allAddress==[] || allAddress==undefined ? <span>You have not added any address!</span> : (allAddress?.map((address) => {
+              allAddress==[] || allAddress==undefined ? <span style={{fontSize:"2.5rem",color:"grey",letterSpacing:'2px'}}>You have not added any address yet!🐥</span> : (allAddress?.map((address) => {
                 return (
                   <div className='address_div_div' key={address?.address_id} >
                     <div className='left_address_div'>
