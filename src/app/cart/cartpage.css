@@ -178,6 +178,11 @@
     border: 1px solid black;
     transition: 0.2s ease-in;
 }
+.checkout_btn:disabled{
+    opacity: 0.6;
+    color: black;
+    cursor: not-allowed;
+}
 
 .no_cart_div{
     width: 100%;

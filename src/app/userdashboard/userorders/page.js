@@ -40,7 +40,7 @@ const Page = () => {
 
   return (
     <div className='orderpage_container'>
-      <span style={{ fontSize: "6rem" }}>Your Orders</span>
+      <span  className='your_orders_span'>Your Orders</span>
       <Link href="/" style={{ color: "grey" }}>Continue shopping...</Link>
      
 

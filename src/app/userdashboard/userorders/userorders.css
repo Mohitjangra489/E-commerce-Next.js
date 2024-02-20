@@ -70,11 +70,17 @@
 .orderid_span{
     font-size: 3rem;
 }
+.your_orders_span{
+    font-size: 6rem;
+}
 
 @media (max-width:700px) {
     .orderid_span{
         font-size: 1rem;
         font-weight: 600;
+    }
+    .your_orders_span{
+        font-size: 3rem;
     }
 }
 

@@ -91,6 +91,43 @@ background-color: black;
 
 }
 
+.spinner {
+   animation-name: spin;
+   animation-duration: 500ms;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+ }
+ 
+ @keyframes spin {
+   from {
+     transform: rotate(0deg);
+   }
+   to {
+     transform: rotate(360deg);
+   }
+ }
+
+ .submit-btn:disabled {
+   /* background: #e7e8e9;
+   color: #9fa3a9; */
+   cursor: not-allowed;
+ }
+ .submit-btn{
+   width: 100%;
+   text-align: center;
+   padding: 8px;
+   background-color: black;
+   border: none;
+   color: white;
+   cursor: pointer;
+}
+.submit-btn:hover{
+   scale: 1.1;
+   transition:0.2s ease-in-out ;
+
+}
+ 
+
 
 @media screen and (max-width:680px){
    .product_list_div{

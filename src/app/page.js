@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import SearchContext from './components/Context';
 import ProductNotFound from './components/ProductNotFound';
 import ProductShimmer from './components/ProductShimmer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [allProducts, setallProducts] = useState([]);
@@ -87,7 +89,7 @@ export default function Home() {
     }
     else {
       return (currentItems?.map((product) => {
-        return <ProductCard product={product} key={product?._id} />
+        return <ProductCard product={product} key={product?._id} toast={toast} />
       }))
     }
   }
@@ -103,7 +105,6 @@ export default function Home() {
       
       <div className='product_list_div'>
         {
-
           renderData()
         }
       </div>
@@ -123,7 +124,7 @@ export default function Home() {
           disabledClassName="disabled_btn"
         />
       </div>
-
+<ToastContainer/>
     </div>
   )
 }

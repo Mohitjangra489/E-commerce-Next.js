@@ -25,7 +25,11 @@ export default function RootLayout({ children, pageProps }) {
 
   return (
     <html lang="en">
+      <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      </head>
       <title>Optimum Nutrition</title>
+
       <body >
         <SearchContext.Provider value={[searchValue, setsearchValue,filterCategory,setfilterCategory]}>
           <div className='mainlayout_container'>

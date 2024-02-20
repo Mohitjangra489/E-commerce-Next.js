@@ -1,19 +1,20 @@
+"use client";
 import Link from 'next/link'
 import React, { useState } from 'react'
 import '../styles/productcard.css';
 import StarRatings from "react-star-ratings";
 import { useRouter } from 'next/navigation';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import api from '../apiMiddleware';
 import encryptStorage from '../encryptstorage';
+import ButtonWithLoader from '../components/ButtonWithLoader';
 
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product,toast }) => {
+  const [showLoader, setShowLoader] = useState(false)
   const router = useRouter();
 
   const handleAddToCart = async () => {
-    
+    setShowLoader(true);
     const securedata = encryptStorage.getItem("encrypted data");
     const userData=JSON.parse(securedata);
     if (!userData) {
@@ -39,9 +40,11 @@ const ProductCard = ({ product }) => {
       }
 
       const res = await api.post("/addcart", bodyData, config).catch((err) => {
+        setShowLoader(false);
         toast.error("Something went wrong!")
       });
       if(res.status==200){
+        setShowLoader(false);
         toast.success(res?.data?.message);
        }
 
@@ -49,7 +52,10 @@ const ProductCard = ({ product }) => {
   }
 
   return (
+    <>
+  
     <div className={product?.stock !== "0" ? 'product_card_div' : 'product_outofstock_div'}>
+
       <div className='product_image_div' onClick={() => { router.push(`/${product?._id}`) }}>
          <img alt='product_image' src={product?.images?.url} className='image' loading='lazy'  />
       </div >
@@ -72,10 +78,10 @@ const ProductCard = ({ product }) => {
         <h2> ₹{product?.price} </h2>
       </div>
       <div className='addcart_div'>
-        {product?.stock !== "0" ? <button className='addcart_btn' onClick={handleAddToCart}>ADD TO CART</button> : <button className='addcart_btn' >OUT OF STOCK</button>}
+        {product?.stock !== "0" ?<ButtonWithLoader  text="Add To Cart" work={handleAddToCart} loading={showLoader} disabled={showLoader} /> : <button className='addcart_btn' >OUT OF STOCK</button>}
       </div>
-<ToastContainer/>
     </div>
+    </>
   )
 }
 

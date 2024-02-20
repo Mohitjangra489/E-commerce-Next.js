@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import '@/app/components/CartItem';
 import CartItem from '@/app/components/CartItem';
 import Link from 'next/link';
@@ -18,14 +17,14 @@ const Page = () => {
     const [subTotal, setsubTotal] = useState(0);
     const [isloading, setisloading] = useState(true);
     const [selectedAddress, setSelectedAddress] = useState('');
-
-    const handleAddressChange = (event) => {
-
-        setSelectedAddress(event.target.value);
-    };
+    const [showLoader, setShowLoader] = useState(false)
     const router = useRouter();
 
-    console.log("user address", allAddress);
+
+    const handleAddressChange = (event) => {
+        setSelectedAddress(event.target.value);
+    };
+
 
     const subtotalPrice = () => {
         if (cartData.length) {
@@ -66,7 +65,7 @@ const Page = () => {
 
 
         if (cartData.length && subTotal && selectedAddress != '') {
-
+            setShowLoader(true);
             const shippingAddress = allAddress.find((address) => address.address_id == selectedAddress);
             console.log(shippingAddress);
             const securedata = encryptStorage.getItem("encrypted data");
@@ -98,7 +97,9 @@ const Page = () => {
                 const result = stripe.redirectToCheckout({
                     sessionId: session.id
                 });
+                setShowLoader(false);
                 if (result.error) {
+                    setShowLoader(false);
                     console.log(result.error);
                 }
 
@@ -164,40 +165,40 @@ const Page = () => {
 
                             </div>
                             {
-                             cartData.length != 0 ? (
-                             <div className='lower_shipping_div'>
-                                <div className='shipping_info_container'>
-                                    <h1>Shipping Information</h1>
-                                    <div className='shipping_addresses_div'>
-                                        {
-                                            allAddress?.length ?
-                                                allAddress.map((address) => {
-                                                    return (<div className='user_address_div' key={address?.address_id}>
-                                                        <input type='radio' className='radio_input'
-                                                            value={address?.address_id} id={address?.address_id}
-                                                            checked={selectedAddress == address?.address_id}
-                                                            onChange={handleAddressChange}
-                                                        />
-                                                        <label htmlFor={address.address_id} >
-                                                            <div>
-                                                                <span>{address?.fullname + " ( " + address?.mobile + " )"}</span><br></br>
-                                                                <span>{address?.address1}</span><br></br>
-                                                                <span>{address?.address2}</span><br></br>
-                                                                <span>{address?.landmark}</span><br></br>
-                                                                <span>{address?.country + "," + address?.city + "," + address?.state + "," + address?.pincode}</span><br></br>
-                                                            </div>
-                                                        </label>
-                                                    </div>)
-                                                })
-                                                : <span style={{fontSize:"2rem",color:"grey"}}>You have not added any address yet.Please add a new address!</span>
-                                        }
-                                    </div>
-                                    <Link href={"/userdashboard/useraddress/addnewaddress"}>
-                                        <button className='addnew_button'>+Add new address</button>
-                                    </Link>
+                                cartData.length != 0 ? (
+                                    <div className='lower_shipping_div'>
+                                        <div className='shipping_info_container'>
+                                            <h1>Shipping Information</h1>
+                                            <div className='shipping_addresses_div'>
+                                                {
+                                                    allAddress?.length ?
+                                                        allAddress.map((address) => {
+                                                            return (<div className='user_address_div' key={address?.address_id}>
+                                                                <input type='radio' className='radio_input'
+                                                                    value={address?.address_id} id={address?.address_id}
+                                                                    checked={selectedAddress == address?.address_id}
+                                                                    onChange={handleAddressChange}
+                                                                />
+                                                                <label htmlFor={address.address_id} >
+                                                                    <div>
+                                                                        <span>{address?.fullname + " ( " + address?.mobile + " )"}</span><br></br>
+                                                                        <span>{address?.address1}</span><br></br>
+                                                                        <span>{address?.address2}</span><br></br>
+                                                                        <span>{address?.landmark}</span><br></br>
+                                                                        <span>{address?.country + "," + address?.city + "," + address?.state + "," + address?.pincode}</span><br></br>
+                                                                    </div>
+                                                                </label>
+                                                            </div>)
+                                                        })
+                                                        : <span style={{ fontSize: "2rem", color: "grey" }}>You have not added any address yet.Please add a new address!</span>
+                                                }
+                                            </div>
+                                            <Link href={"/userdashboard/useraddress/addnewaddress"}>
+                                                <button className='addnew_button'>+Add new address</button>
+                                            </Link>
 
-                                </div>
-                               
+                                        </div>
+
                                         <div className="right_div">
                                             <div className="order_summary">
                                                 <span>Order Summary</span>
@@ -233,16 +234,23 @@ const Page = () => {
                                                             <span className="value">₹{subTotal > 999 ? subTotal : Number(subTotal) + 40}</span>
                                                         </li>
                                                     </ul>
-                                                    <button className='checkout_btn' onClick={handleCheckout}>CHECKOUT</button>
+                                                    <button className='checkout_btn' onClick={handleCheckout} disabled={showLoader}>
+                                                        {!showLoader ? "CHECKOUT" : <svg className="spinner" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg" color='black'>
+                                                            <path
+                                                                d="M4.38798 12.616C3.36313 12.2306 2.46328 11.5721 1.78592 10.7118C1.10856 9.85153 0.679515 8.82231 0.545268 7.73564C0.411022 6.64897 0.576691 5.54628 1.02433 4.54704C1.47197 3.54779 2.1845 2.69009 3.08475 2.06684C3.98499 1.4436 5.03862 1.07858 6.13148 1.01133C7.22435 0.944078 8.31478 1.17716 9.28464 1.68533C10.2545 2.19349 11.0668 2.95736 11.6336 3.89419C12.2004 4.83101 12.5 5.90507 12.5 7"
+                                                                stroke="black"
+                                                            />
+                                                        </svg>}
+                                                    </button>
                                                 </div>
                                             </div>
 
                                         </div>
 
-                            </div>
-                             ) : ""
-                             }
-                             
+                                    </div>
+                                ) : ""
+                            }
+
                             <ToastContainer />
                         </div>
 

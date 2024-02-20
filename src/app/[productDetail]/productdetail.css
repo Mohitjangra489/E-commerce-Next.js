@@ -58,6 +58,9 @@
     color: white;
     cursor: pointer;
 }
+.cart_btn:disabled{
+    cursor: not-allowed;
+}
 
 .rating_div {
     margin-bottom: 10px;
@@ -81,6 +84,22 @@ border: none;
 background-color:black ;
 color: white;
 }
+.spinner {
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+ 
 
 @media screen and (max-width:680px){
     .upper_div{

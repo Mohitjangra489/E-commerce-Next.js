@@ -36,3 +36,4 @@ export const CarouselImages = [
         url: "https://cdn2.nutrabay.com/page_manager/Mobile-2000-x-900-ON-5---ON-2024-01-19T16:26:17.jpg"
     },
 ]
+
