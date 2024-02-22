@@ -16,7 +16,7 @@ export default function Home() {
   const [totalProducts, setTotalProducts] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const [itemOffset, setItemOffset] = useState(0);
-  const [searchValue, setsearchValue,filterCategory,setfilterCategory] = useContext(SearchContext);
+  const [searchValue, setsearchValue, filterCategory, setfilterCategory] = useContext(SearchContext);
 
   const router = useRouter();
   const itemsPerPage = 6;
@@ -33,7 +33,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchallproducts() {
-      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) }).catch((error)=>console.log(error));
+      let req = await api.get('/allproducts').then((res) => { setallProducts(res.data); setTotalProducts(res.data) }).catch((error) => console.log(error));
     };
     fetchallproducts();
     setisLoading(false);
@@ -46,19 +46,18 @@ export default function Home() {
     if (value !== "") {
       let products = [...totalProducts];
       let searched = products.filter((product) => {
-        return (product.name).toLowerCase().includes(value.toLowerCase());
+        return (product?.name).toLowerCase().includes(value.toLowerCase()) || (product?.description).toLowerCase().includes(value.toLowerCase());
       })
 
       setallProducts(searched);
     }
-    else if (value == "" && category =="All") {
+    else if (value == "" && category == "All") {
       setallProducts([...totalProducts]);
     }
-    else
-    {
+    else {
       let products = [...totalProducts];
       let filtered = products?.filter((product) => {
-        return (product.category==category);
+        return (product.category == category);
       })
 
       setallProducts(filtered);
@@ -70,7 +69,7 @@ export default function Home() {
     if (category !== "All") {
       let products = [...totalProducts];
       let filtered = products?.filter((product) => {
-        return (product.category==category);
+        return (product.category == category);
       })
       setallProducts(filtered);
     }
@@ -81,7 +80,7 @@ export default function Home() {
 
 
   function renderData() {
-    if (isLoading || totalProducts.length==0) {
+    if (isLoading || totalProducts.length == 0) {
       return <ProductShimmer />
     }
     else if (currentItems.length == 0) {
@@ -102,7 +101,7 @@ export default function Home() {
 
   return (
     <div className="product_list_container">
-      
+
       <div className='product_list_div'>
         {
           renderData()
@@ -122,12 +121,13 @@ export default function Home() {
           className='pagination'
           activeLinkClassName="activePage"
           disabledClassName="disabled_btn"
+          disabledLinkClassName="disabled_link"
         />
       </div>
-<ToastContainer 
-autoClose={1000}
-closeOnClick
-/>
+      <ToastContainer
+        autoClose={1000}
+        closeOnClick
+      />
     </div>
   )
 }

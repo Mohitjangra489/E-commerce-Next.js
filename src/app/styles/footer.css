@@ -68,9 +68,9 @@ footer {
   }
   .inputsBtn input {
     width: 384px;
-    /* height: 47px; */
-    padding: 14px 24px;
+    padding:0 0 0 10px;
     gap: 8px;
+    border-radius: 5px;
   }
   .inputsBtn button {
     width: 184px;
@@ -85,6 +85,11 @@ footer {
   }
   .inputsBtn button:hover {
     cursor: pointer;
+  }
+
+  .subscribeBtn:hover{
+  background-color: white;
+  color:black;
   }
   
   .newsletter {
@@ -197,6 +202,8 @@ footer {
 }
 .inputsBtn input{
   height: auto;
+  margin-right: 5px;
+
 }
 .inputsBtn{
   column-gap: 0px;

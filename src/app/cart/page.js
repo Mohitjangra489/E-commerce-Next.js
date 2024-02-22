@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SpinnerLoader from '../components/SpinnerLoader';
 import encryptStorage from '../encryptstorage';
+import BlurLoaderPage from '../components/BlurLoaderPage';
 
 const Page = () => {
     const [allAddress, setallAddress] = useState([]);
@@ -17,7 +18,8 @@ const Page = () => {
     const [subTotal, setsubTotal] = useState(0);
     const [isloading, setisloading] = useState(true);
     const [selectedAddress, setSelectedAddress] = useState('');
-    const [showLoader, setShowLoader] = useState(false)
+    const [showLoader, setShowLoader] = useState(false);
+    const [showBlurPage,setshowBlurPage]=useState(false);
     const router = useRouter();
 
 
@@ -61,7 +63,6 @@ const Page = () => {
     //.......................................CHECKOUT FUNCTION............................................  
     async function handleCheckout(e) {
         e.preventDefault();
-
 
 
         if (cartData.length && subTotal && selectedAddress != '') {
@@ -132,6 +133,7 @@ const Page = () => {
 
     return (
         <div className='cartpage_container'>
+            {showBlurPage && <BlurLoaderPage />}
             <div className='yourcart_div'>
                 <span className='Your_cart'>Your Cart<span className='special_span'>{(!cartData.length != 0 && isloading == false) ? ("(Empty)") : ""}</span></span>
             </div>
@@ -154,7 +156,7 @@ const Page = () => {
                             <div className='left_div'>
                                 {cartData.length != 0 ? (
                                     cartData.map((item) => {
-                                        return <CartItem item={item} cartData={cartData} setcartData={setcartData} key={item.product_id} />
+                                        return <CartItem item={item} cartData={cartData} setcartData={setcartData} key={item.product_id} setshowBlurPage={setshowBlurPage} />
                                     })
                                 ) : (
                                     <div className='no_cart_div'>

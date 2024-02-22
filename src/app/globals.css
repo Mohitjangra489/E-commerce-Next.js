@@ -74,8 +74,10 @@ html,body{
 
 }
 .disabled_btn{
-   display: none;
-  
+cursor: not-allowed;  
+}
+ .prev_link .disabled_link{
+cursor: not-allowed;  
 }
 .activePage{
    background-color: black;

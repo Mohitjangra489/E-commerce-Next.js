@@ -6,15 +6,17 @@ import { CiSquarePlus, CiSquareMinus, CiSquareRemove } from "react-icons/ci";
 import api from '../apiMiddleware';
 import encryptStorage from '../encryptstorage';
 
-const CartItem = ({ item, cartData, setcartData }) => {
+const CartItem = ({ item, cartData, setcartData,setshowBlurPage}) => {
 
   const handleDeleteCartitem = async () => {
+  
     const securedata = encryptStorage.getItem("encrypted data");
             const userData=JSON.parse(securedata);
     if (!userData) {
       router.push("/login");
     }
     else {
+      setshowBlurPage(true);
       let userid = userData?.user_id;
       let req = await api.delete(`/deletecartitem?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
@@ -24,19 +26,25 @@ const CartItem = ({ item, cartData, setcartData }) => {
             return cartitem.product_id != item.product_id;
           });
           setcartData(updatedcartdata);
+          setshowBlurPage(false);
         }
 
-      }).catch((error => console.log(error)));
+      }).catch((error => {
+        console.log(error);
+        setshowBlurPage(false);
+      }));
     }
   }
 
   const handleincreasequantity = async () => {
+   
     const securedata = encryptStorage.getItem("encrypted data");
             const userData=JSON.parse(securedata);
     if (!userData) {
       router.push("/login");
     }
     else {
+      setshowBlurPage(true);
       let userid = userData?.user_id;
       let req = await api.post(`/pluscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
         const data = res?.data;
@@ -53,13 +61,19 @@ const CartItem = ({ item, cartData, setcartData }) => {
           }
 
           setcartData(alldata);
+          setshowBlurPage(false);
         }
 
-      }).catch((error => console.log(error)));
+      }).catch((error => {
+        console.log(error);
+        setshowBlurPage(false);
+      }));
     }
   }
 
   const handledecreasequantity = async () => {
+
+    
     if (item.quantity > 1) {
       const securedata = encryptStorage.getItem("encrypted data");
       const userData=JSON.parse(securedata);
@@ -67,6 +81,7 @@ const CartItem = ({ item, cartData, setcartData }) => {
         router.push("/login");
       }
       else {
+        setshowBlurPage(true);
         let userid = userData?.user_id;
         let req = await api.post(`/minuscart?user_id=${userid}&product_id=${item.product_id}`).then((res) => {
           const data = res?.data;
@@ -84,9 +99,14 @@ const CartItem = ({ item, cartData, setcartData }) => {
               }
             }
             setcartData(alldata);
+            setshowBlurPage(false);
           }
 
-        }).catch((error => console.log(error)));
+        }).catch((error => {
+          console.log(error)
+          setshowBlurPage(false);
+        }
+        ));
       }
     }
 
@@ -119,7 +139,7 @@ const CartItem = ({ item, cartData, setcartData }) => {
           <div>
             <CiSquarePlus className='plus' cursor="pointer" onClick={handleincreasequantity} />
             <span>{item.quantity}</span>
-            <CiSquareMinus className='minus' cursor="pointer" onClick={handledecreasequantity} />
+            <CiSquareMinus className='minus' cursor="pointer" onClick={handledecreasequantity}  />
           </div>
         </div>
         <div>

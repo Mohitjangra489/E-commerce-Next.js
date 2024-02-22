@@ -52,7 +52,7 @@
 
 .sidebar_ul {
     padding-left: 0px;
-    line-height: 1.8;
+    line-height: 2.3;
 }
 
 .ratings_ul>li {
@@ -62,6 +62,24 @@
 .ratings_ul {
     padding-left: 0px;
     line-height: 1.4;
+}
+.select_category_span{
+    background-color: black;
+    color: #dba551;;
+    padding: 6px;
+    border-radius: 36px;
+    transition: 0.4s ease-out;
+
+}
+.select_input_tag{
+    height: 18px;
+    width: 18px;
+    display: none;
+}
+.filter_span{
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 4.0rem;
 }
 
 /* ...........................................................................media query */
