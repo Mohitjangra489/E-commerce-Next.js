@@ -22,9 +22,9 @@ const [selectedCategory,setselectedCategory]=useState(filterCategory);
                 <span className='filter_span'> Filter By Category</span>
                 <ul className='sidebar_ul'>
                     {
-                        categories.map((item) => {
+                        categories.map((item,index) => {
                             return (
-                                <li>
+                                <li key={index}>
                                     <label >
                                        {
                                         item!==selectedCategory && <input name="category" type="radio" value={item} className="select_input_tag" onClick={handleFilterByCategory} />
