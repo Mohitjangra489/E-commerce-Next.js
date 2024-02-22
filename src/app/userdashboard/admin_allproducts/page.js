@@ -101,7 +101,10 @@ const Page = () => {
       <div className='pagination_container'>
 
       </div>
-      <ToastContainer />
+      <ToastContainer 
+      autoClose={1000}
+      closeOnClick
+      />
       <ReactPaginate
         breakLabel="..."
         nextLabel=">"

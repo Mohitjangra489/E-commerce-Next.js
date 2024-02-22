@@ -165,7 +165,10 @@ const Page = ({ params }) => {
                 ) : <SpinnerLoader />
             }
 
-            <ToastContainer />
+            <ToastContainer 
+            autoClose={1000}
+            closeOnClick
+            />
 
         </>
     )

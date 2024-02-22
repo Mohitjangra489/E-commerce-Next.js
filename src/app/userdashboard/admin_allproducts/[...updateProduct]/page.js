@@ -164,7 +164,9 @@ const UpdateProduct = ({ params }) => {
             Update Product image
           </button>
         </form>
-        <ToastContainer />
+        <ToastContainer
+        autoClose={1000}
+        closeOnClick />
 
       </div>
     )
@@ -299,7 +301,9 @@ const UpdateProduct = ({ params }) => {
             Update Product
           </button>
         </form>
-        <ToastContainer />
+        <ToastContainer 
+        autoClose={1000}
+        closeOnClick/>
 
       </div>
     )

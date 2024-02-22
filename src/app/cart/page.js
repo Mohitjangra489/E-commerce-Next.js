@@ -251,7 +251,10 @@ const Page = () => {
                                 ) : ""
                             }
 
-                            <ToastContainer />
+                            <ToastContainer 
+                            autoClose={1000}
+                            closeOnClick
+                            />
                         </div>
 
                     </>

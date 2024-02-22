@@ -124,7 +124,10 @@ export default function Home() {
           disabledClassName="disabled_btn"
         />
       </div>
-<ToastContainer/>
+<ToastContainer 
+autoClose={1000}
+closeOnClick
+/>
     </div>
   )
 }

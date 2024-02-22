@@ -122,7 +122,10 @@ const Page = () => {
                     
                 </div>
             </form>
-            <ToastContainer />
+            <ToastContainer
+            autoClose={1000}
+            closeOnClick
+            />
         </div>
     )
 }
